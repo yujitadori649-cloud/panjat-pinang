@@ -3,382 +3,199 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="theme-color" content="#d90f2f" />
+  <meta name="theme-color" content="#c90c2a" />
   <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <title>Panjat Pinang • Member Cukup Masukkan ID</title>
+  <title>Tebak Juara Panjat Pinang • Pilih 1 dari 4</title>
   <style>
     :root{
-      --red:#e31937;
-      --red2:#a90721;
-      --gold:#ffd36a;
-      --cream:#fff7e8;
-      --ink:#28060d;
-      --green:#1db76c;
-      --sky1:#69b9ff;
-      --sky2:#dff4ff;
+      --red:#e31937;--red2:#9d071e;--gold:#ffd36a;--cream:#fff7e8;--ink:#29070e;
+      --green:#1db76c;--sky1:#6ec4ff;--sky2:#def5ff;--line:#ead9dc;
     }
     *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-    html,body{margin:0;min-height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:#f6efe8;color:var(--ink)}
-    button,input,textarea{font:inherit}
-    .hidden{display:none!important}
-    .app{min-height:100vh;background:linear-gradient(180deg,#fef8f0 0%,#f8efe5 100%)}
-    .hero{
-      position:relative;overflow:hidden;color:#fff;padding:20px 16px 24px;
-      background:
-        radial-gradient(circle at 85% 10%,rgba(255,211,106,.42),transparent 26%),
-        linear-gradient(145deg,#f42545,#b80826 68%,#7d071b);
-    }
-    .hero:before,.hero:after{content:"";position:absolute;width:190px;height:190px;border-radius:50%;background:rgba(255,255,255,.08)}
-    .hero:before{right:-100px;top:-80px}.hero:after{left:-120px;bottom:-130px}
-    .hero-inner{width:min(760px,100%);margin:0 auto;position:relative;z-index:1;display:flex;align-items:center;gap:14px}
-    .crest{width:62px;height:62px;border-radius:21px;background:#fff;color:var(--red2);display:grid;place-items:center;font-size:34px;box-shadow:0 12px 30px rgba(77,0,12,.22);flex:0 0 auto}
-    h1,h2,h3,p{margin:0}
-    h1{font-size:clamp(23px,5vw,34px);line-height:1.08;letter-spacing:-.02em}
-    .hero p{margin-top:5px;color:#ffe8ec;font-size:14px}
-    .content{width:min(760px,calc(100% - 20px));margin:16px auto 40px}
-    .card{background:#fff;border:1px solid rgba(56,8,17,.1);border-radius:22px;padding:18px;box-shadow:0 14px 36px rgba(83,35,15,.08)}
-    .verify-card{display:grid;gap:14px}
-    .section-title{display:flex;align-items:center;justify-content:space-between;gap:10px}
-    .section-title h2{font-size:18px}
-    .pill{font-size:11px;padding:6px 9px;border-radius:999px;background:#fff0f2;color:var(--red2);font-weight:900;border:1px solid #ffd2da}
-    label{font-size:13px;font-weight:800;display:block;margin-bottom:7px}
-    input,textarea{
-      width:100%;border:1px solid #e5d5d7;border-radius:13px;background:#fffdfb;color:#26050b;padding:12px 13px;outline:none
-    }
-    textarea{min-height:104px;resize:vertical;line-height:1.42;font-size:12px}
-    input:focus,textarea:focus{border-color:#ee6c81;box-shadow:0 0 0 4px rgba(227,25,55,.08)}
-    .btn{border:0;border-radius:14px;padding:13px 17px;font-weight:900;cursor:pointer;transition:.15s transform,.15s filter}
-    .btn:active{transform:translateY(1px) scale(.995)}
-    .btn.primary{background:linear-gradient(180deg,#ff3e59,#c70d2b);color:#fff;box-shadow:0 10px 22px rgba(227,25,55,.24)}
-    .btn.gold{background:linear-gradient(180deg,#ffe59f,#e6ab28);color:#3b1e00;box-shadow:0 10px 22px rgba(208,145,10,.2)}
-    .btn.ghost{background:#fff5f6;color:var(--red2);border:1px solid #ffd4da}
-    .msg{min-height:18px;font-size:13px;line-height:1.45}
-    .msg.error{color:#c4122f}.msg.ok{color:#087c46}
-    .member-info{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-    .mini{border:1px solid #efe0e2;border-radius:13px;padding:10px;background:#fffaf8}
-    .mini span{display:block;font-size:10px;color:#9c6d76;margin-bottom:4px;font-weight:700}
-    .mini strong{display:block;font-size:13px;word-break:break-word}
+    html,body{margin:0;min-height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:#f7efe7;color:var(--ink)}
+    button,input{font:inherit}.hidden{display:none!important}button{touch-action:manipulation}
+    .app{min-height:100vh;background:linear-gradient(180deg,#fffaf3 0%,#f7eee5 100%)}
+    .hero{position:relative;overflow:hidden;color:#fff;padding:18px 16px 22px;background:radial-gradient(circle at 86% 5%,rgba(255,217,112,.5),transparent 27%),linear-gradient(145deg,#f72d4c,#b50926 67%,#760619)}
+    .hero:before,.hero:after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.08)}
+    .hero:before{width:210px;height:210px;right:-118px;top:-115px}.hero:after{width:180px;height:180px;left:-110px;bottom:-140px}
+    .hero-inner{width:min(860px,100%);margin:0 auto;position:relative;z-index:1;display:flex;align-items:center;gap:13px}
+    .crest{width:60px;height:60px;border-radius:20px;background:#fff;display:grid;place-items:center;font-size:32px;box-shadow:0 12px 30px rgba(75,0,12,.25);flex:0 0 auto}
+    h1,h2,h3,p{margin:0}h1{font-size:clamp(22px,5vw,34px);line-height:1.08;letter-spacing:-.025em}.hero p{margin-top:5px;color:#ffe8ed;font-size:13px}
+    .content{width:min(860px,calc(100% - 20px));margin:14px auto 38px}.card{background:#fff;border:1px solid rgba(56,8,17,.1);border-radius:22px;padding:18px;box-shadow:0 14px 38px rgba(83,35,15,.09)}
+    .verify-card{display:grid;gap:14px}.section-title{display:flex;align-items:center;justify-content:space-between;gap:10px}.section-title h2{font-size:18px}
+    .pill{font-size:10px;padding:6px 9px;border-radius:999px;background:#fff0f2;color:var(--red2);font-weight:950;border:1px solid #ffd2da;white-space:nowrap}
+    label{font-size:13px;font-weight:850;display:block;margin-bottom:7px}input{width:100%;border:1px solid #e5d5d7;border-radius:13px;background:#fffdfb;color:#26050b;padding:12px 13px;outline:none;text-transform:uppercase}
+    input:focus{border-color:#ee6c81;box-shadow:0 0 0 4px rgba(227,25,55,.08)}
+    .btn{border:0;border-radius:14px;padding:13px 17px;font-weight:950;cursor:pointer;transition:.15s transform,.15s filter,.15s opacity}.btn:active{transform:translateY(1px) scale(.995)}.btn:disabled{opacity:.55;cursor:not-allowed}
+    .btn.primary{background:linear-gradient(180deg,#ff3e59,#c70d2b);color:#fff;box-shadow:0 10px 22px rgba(227,25,55,.24)}.btn.gold{background:linear-gradient(180deg,#ffe59f,#e6ab28);color:#3b1e00;box-shadow:0 10px 22px rgba(208,145,10,.2)}.btn.ghost{background:#fff5f6;color:var(--red2);border:1px solid #ffd4da}
+    .msg{min-height:18px;font-size:13px;line-height:1.45}.msg.error{color:#c4122f}.msg.ok{color:#087c46}.member-info{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+    .mini{border:1px solid #efe0e2;border-radius:13px;padding:10px;background:#fffaf8}.mini span{display:block;font-size:10px;color:#9c6d76;margin-bottom:4px;font-weight:750}.mini strong{display:block;font-size:13px;word-break:break-word}
+    .disclosure{background:#fff9ea;border:1px solid #f1dfae;color:#725114;border-radius:14px;padding:11px 12px;font-size:12px;line-height:1.48}
 
-    .game-card{padding:0;overflow:hidden;background:#fff}
-    .game-top{padding:14px 15px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;background:#fff}
-    .metric{border:1px solid #efdee0;border-radius:13px;padding:9px;text-align:center;background:#fff9f8}
-    .metric span{display:block;font-size:10px;color:#9b6771;font-weight:800;margin-bottom:3px}
-    .metric strong{font-size:17px;color:#5b0a18}
+    .pick-card{display:grid;gap:15px}.pick-head{text-align:center}.pick-head h2{font-size:23px}.pick-head p{margin-top:6px;color:#8d5d66;font-size:13px;line-height:1.45}
+    .picker-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.pick{position:relative;border:2px solid #eadbdd;border-radius:18px;padding:13px 8px 12px;background:linear-gradient(180deg,#fff,#fff8f6);cursor:pointer;text-align:center;transition:.18s transform,.18s border-color,.18s box-shadow;min-height:164px}
+    .pick:hover{transform:translateY(-2px)}.pick.selected{border-color:var(--red);box-shadow:0 0 0 4px rgba(227,25,55,.09),0 12px 24px rgba(129,16,34,.12);transform:translateY(-2px)}
+    .pick-number{width:31px;height:31px;border-radius:10px;display:grid;place-items:center;margin:0 auto 8px;font-weight:950;color:#fff;background:var(--runner);box-shadow:0 7px 15px rgba(30,5,10,.15)}
+    .avatar{position:relative;width:60px;height:78px;margin:0 auto 7px}.avatar .head{position:absolute;left:20px;top:2px;width:22px;height:22px;border-radius:50%;background:#bd7951;border:2px solid #693b27}.avatar .hair{position:absolute;left:19px;top:0;width:24px;height:12px;border-radius:13px 13px 4px 4px;background:#1e1512;z-index:2}.avatar .body{position:absolute;left:15px;top:22px;width:31px;height:34px;border-radius:9px;background:linear-gradient(180deg,#fff 0 42%,var(--runner) 43% 100%);border:2px solid #742133}.avatar .arm,.avatar .leg{position:absolute;border-radius:7px;background:#bd7951;border:2px solid #693b27;transform-origin:top center}.avatar .arm{top:27px;width:9px;height:30px}.avatar .arm.left{left:10px;transform:rotate(23deg)}.avatar .arm.right{right:9px;transform:rotate(-23deg)}.avatar .leg{top:52px;width:10px;height:25px;background:#243e75;border-color:#15254b}.avatar .leg.left{left:20px;transform:rotate(11deg)}.avatar .leg.right{right:18px;transform:rotate(-11deg)}
+    .pick strong{display:block;font-size:13px}.pick small{display:block;color:#a1727a;font-size:10px;margin-top:3px}.choice-badge{position:absolute;top:7px;right:7px;padding:4px 6px;border-radius:999px;background:var(--red);color:#fff;font-size:8px;font-weight:950;opacity:0;transform:scale(.7);transition:.18s}.pick.selected .choice-badge{opacity:1;transform:scale(1)}
+    .pick-actions{display:grid;gap:9px}.selected-note{text-align:center;min-height:18px;color:#8a4b57;font-size:12px;font-weight:800}
 
-    .scene{
-      height:470px;position:relative;overflow:hidden;touch-action:manipulation;
-      background:
-        radial-gradient(circle at 18% 22%,rgba(255,255,255,.8) 0 24px,transparent 25px),
-        radial-gradient(circle at 25% 22%,rgba(255,255,255,.75) 0 32px,transparent 33px),
-        radial-gradient(circle at 76% 16%,rgba(255,255,255,.8) 0 25px,transparent 26px),
-        radial-gradient(circle at 83% 16%,rgba(255,255,255,.72) 0 34px,transparent 35px),
-        linear-gradient(180deg,var(--sky1),var(--sky2) 72%,#8bd26a 72%,#4a9b48 100%);
-    }
-    .sun{position:absolute;right:28px;top:28px;width:64px;height:64px;border-radius:50%;background:#ffe28c;box-shadow:0 0 0 10px rgba(255,226,140,.23)}
-    .flags{position:absolute;top:12px;left:0;right:0;height:42px;background:repeating-linear-gradient(125deg,transparent 0 30px,rgba(255,255,255,.9) 31px 48px,var(--red) 49px 66px,transparent 67px 94px);opacity:.92;clip-path:polygon(0 0,100% 0,100% 60%,0 100%)}
-    .pole-shadow{position:absolute;left:50%;bottom:34px;width:86px;height:17px;border-radius:50%;background:rgba(34,80,30,.22);transform:translateX(-50%)}
-    .pole{
-      position:absolute;left:50%;bottom:38px;transform:translateX(-50%);width:30px;height:365px;border-radius:15px 15px 8px 8px;
-      background:linear-gradient(90deg,#6e3e16 0%,#c58b44 20%,#f2c477 48%,#aa6a2d 76%,#603411 100%);
-      box-shadow:inset 0 0 0 2px rgba(65,31,7,.22),8px 3px 14px rgba(41,48,26,.18)
-    }
-    .pole:after{content:"";position:absolute;inset:0;border-radius:inherit;background:repeating-linear-gradient(178deg,rgba(255,255,255,.12) 0 9px,rgba(69,31,8,.09) 10px 18px)}
-    .top-platform{position:absolute;left:50%;top:55px;transform:translateX(-50%);width:220px;height:20px;border-radius:10px;background:linear-gradient(180deg,#9d6027,#5b2f0d);box-shadow:0 7px 14px rgba(55,29,12,.2)}
-    .gifts{position:absolute;left:50%;top:17px;transform:translateX(-50%);display:flex;align-items:flex-end;gap:5px}
-    .gift{width:42px;height:36px;border-radius:7px;background:linear-gradient(145deg,#ffdf66,#e6a61f);border:2px solid rgba(115,62,3,.22);display:grid;place-items:center;font-size:21px;box-shadow:0 7px 12px rgba(62,37,4,.15)}
-    .gift:nth-child(2){height:44px;background:linear-gradient(145deg,#ff5871,#bd0f2c)}
-    .gift:nth-child(3){background:linear-gradient(145deg,#fff,#e8e1db)}
-    .crowd{position:absolute;left:0;right:0;bottom:22px;height:70px;opacity:.8;background:
-      radial-gradient(circle at 5% 40%,#273b32 0 9px,transparent 10px),radial-gradient(circle at 13% 30%,#273b32 0 10px,transparent 11px),radial-gradient(circle at 22% 45%,#273b32 0 9px,transparent 10px),radial-gradient(circle at 78% 45%,#273b32 0 9px,transparent 10px),radial-gradient(circle at 87% 30%,#273b32 0 10px,transparent 11px),radial-gradient(circle at 95% 40%,#273b32 0 9px,transparent 10px),linear-gradient(transparent 40%,#315b3c 41%)}
-    .crowd:after{content:"";position:absolute;inset:26px 0 0;background:repeating-linear-gradient(90deg,transparent 0 18px,#273b32 19px 32px,transparent 33px 43px);clip-path:polygon(0 35%,100% 0,100% 100%,0 100%)}
+    .race-card{padding:0;overflow:hidden}.race-top{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:11px;background:#fff}.metric{border:1px solid #efdee0;border-radius:13px;padding:9px;text-align:center;background:#fff9f8}.metric span{display:block;font-size:9px;color:#9b6771;font-weight:850;margin-bottom:3px}.metric strong{font-size:15px;color:#5b0a18}
+    .arena{height:570px;position:relative;overflow:hidden;background:radial-gradient(circle at 15% 16%,rgba(255,255,255,.84) 0 25px,transparent 26px),radial-gradient(circle at 22% 16%,rgba(255,255,255,.78) 0 36px,transparent 37px),radial-gradient(circle at 78% 12%,rgba(255,255,255,.84) 0 25px,transparent 26px),radial-gradient(circle at 85% 12%,rgba(255,255,255,.75) 0 35px,transparent 36px),linear-gradient(180deg,var(--sky1),var(--sky2) 77%,#91d66f 77%,#4f9e49 100%)}
+    .arena:before{content:"";position:absolute;left:0;right:0;top:12px;height:38px;background:repeating-linear-gradient(125deg,transparent 0 26px,rgba(255,255,255,.95) 27px 43px,var(--red) 44px 60px,transparent 61px 86px);opacity:.9;clip-path:polygon(0 0,100% 0,100% 55%,0 100%)}
+    .sun{position:absolute;right:25px;top:52px;width:59px;height:59px;border-radius:50%;background:#ffe28c;box-shadow:0 0 0 10px rgba(255,226,140,.23)}
+    .finish-banner{position:absolute;top:54px;left:50%;transform:translateX(-50%);z-index:3;background:linear-gradient(180deg,#ffe69b,#e7a925);color:#4b2200;border:2px solid #a9650c;border-radius:12px;padding:7px 16px;font-size:12px;font-weight:1000;box-shadow:0 8px 17px rgba(68,36,4,.18);white-space:nowrap}
+    .lanes{position:absolute;inset:88px 5px 37px;display:grid;grid-template-columns:repeat(4,1fr);gap:4px}.lane{position:relative;border-left:1px dashed rgba(55,84,72,.17);border-right:1px dashed rgba(55,84,72,.17)}.lane.choice{background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,211,106,.2));border-color:rgba(227,25,55,.3)}
+    .lane-label{position:absolute;left:50%;bottom:-26px;transform:translateX(-50%);background:#fff;border:2px solid var(--runner);border-radius:10px;padding:4px 7px;font-size:9px;font-weight:1000;color:#5a1824;white-space:nowrap;z-index:7}.lane.choice .lane-label:after{content:" • PILIHANMU";color:var(--red)}
+    .pole{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:22px;height:390px;border-radius:12px 12px 6px 6px;background:linear-gradient(90deg,#643715,#ba7d38 20%,#edbd70 48%,#a3632b 76%,#59300f);box-shadow:inset 0 0 0 2px rgba(65,31,7,.2),6px 3px 11px rgba(41,48,26,.13)}.pole:after{content:"";position:absolute;inset:0;border-radius:inherit;background:repeating-linear-gradient(178deg,rgba(255,255,255,.1) 0 8px,rgba(69,31,8,.08) 9px 16px)}
+    .platform{position:absolute;left:50%;bottom:386px;transform:translateX(-50%);width:75px;height:12px;border-radius:8px;background:linear-gradient(180deg,#9d6027,#5b2f0d);box-shadow:0 5px 10px rgba(55,29,12,.18)}.gift{position:absolute;left:50%;bottom:398px;transform:translateX(-50%);width:36px;height:31px;border-radius:7px;background:linear-gradient(145deg,#ffdf66,#e6a61f);border:2px solid rgba(115,62,3,.22);display:grid;place-items:center;font-size:18px;box-shadow:0 6px 11px rgba(62,37,4,.14)}
+    .runner{--scale:.82;position:absolute;left:50%;bottom:5px;transform:translateX(-50%) scale(var(--scale));width:68px;height:88px;z-index:6;transition:bottom .09s linear;filter:drop-shadow(0 6px 4px rgba(20,38,25,.2))}.runner.leader{filter:drop-shadow(0 0 9px rgba(255,211,106,.95)) drop-shadow(0 7px 4px rgba(20,38,25,.2))}.runner.winner{animation:victory .36s ease-in-out infinite alternate}.runner .head{position:absolute;left:23px;top:3px;width:24px;height:24px;border-radius:50%;background:#bd7951;border:2px solid #693b27;z-index:3}.runner .hair{position:absolute;left:22px;top:1px;width:26px;height:12px;border-radius:13px 13px 4px 4px;background:#1e1512;z-index:4}.runner .body{position:absolute;left:18px;top:25px;width:35px;height:38px;border-radius:9px;background:linear-gradient(180deg,#fff 0 43%,var(--runner) 44% 100%);border:2px solid #742133;z-index:2}.runner .arm,.runner .leg{position:absolute;border-radius:7px;transform-origin:top center}.runner .arm{top:30px;width:10px;height:34px;background:#bd7951;border:2px solid #693b27}.runner .arm.left{left:13px;transform:rotate(29deg)}.runner .arm.right{right:10px;transform:rotate(-29deg)}.runner .leg{top:59px;width:12px;height:29px;background:#243e75;border:2px solid #15254b}.runner .leg.left{left:23px;transform:rotate(18deg)}.runner .leg.right{right:18px;transform:rotate(-18deg)}
+    .runner.moving .arm.left{animation:armL .28s linear infinite alternate}.runner.moving .arm.right{animation:armR .28s linear infinite alternate}.runner.moving .leg.left{animation:legL .3s linear infinite alternate}.runner.moving .leg.right{animation:legR .3s linear infinite alternate}
+    @keyframes armL{to{transform:rotate(-15deg)}}@keyframes armR{to{transform:rotate(15deg)}}@keyframes legL{to{transform:rotate(-12deg)}}@keyframes legR{to{transform:rotate(12deg)}}@keyframes victory{to{transform:translateX(-50%) scale(var(--scale)) translateY(-7px) rotate(4deg)}}
+    .countdown{position:absolute;inset:0;z-index:15;display:grid;place-items:center;background:rgba(35,9,15,.23);backdrop-filter:blur(2px)}.countdown strong{width:128px;height:128px;border-radius:42px;display:grid;place-items:center;background:rgba(255,255,255,.94);border:7px solid rgba(227,25,55,.2);font-size:64px;color:var(--red2);box-shadow:0 18px 55px rgba(41,6,14,.25);animation:pop .7s ease-out}@keyframes pop{0%{transform:scale(.55);opacity:.2}55%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}
+    .race-footer{padding:13px 15px;background:#fff}.race-status{text-align:center;font-size:13px;font-weight:900;color:#7f3947;min-height:20px}.progress-track{height:10px;border-radius:999px;background:#f0e2e1;overflow:hidden;border:1px solid #ead5d7;margin-top:8px}.progress-bar{height:100%;width:0;background:linear-gradient(90deg,#e31937,#ffbf43);transition:width .1s linear}
+    .crowd{position:absolute;left:0;right:0;bottom:0;height:44px;opacity:.78;background:radial-gradient(circle at 5% 50%,#183849 0 12px,transparent 13px),radial-gradient(circle at 12% 65%,#7d1c2e 0 12px,transparent 13px),radial-gradient(circle at 21% 50%,#183849 0 13px,transparent 14px),radial-gradient(circle at 31% 68%,#7d1c2e 0 13px,transparent 14px),radial-gradient(circle at 42% 48%,#183849 0 13px,transparent 14px),radial-gradient(circle at 54% 66%,#7d1c2e 0 13px,transparent 14px),radial-gradient(circle at 66% 49%,#183849 0 13px,transparent 14px),radial-gradient(circle at 78% 68%,#7d1c2e 0 13px,transparent 14px),radial-gradient(circle at 89% 51%,#183849 0 13px,transparent 14px),radial-gradient(circle at 98% 66%,#7d1c2e 0 13px,transparent 14px)}
 
-    .climber{position:absolute;left:50%;bottom:43px;width:76px;height:92px;transform:translateX(-50%);transition:bottom .16s ease-out;z-index:5;filter:drop-shadow(0 8px 5px rgba(36,43,20,.18))}
-    .climber.boost{animation:wiggle .16s ease}.climber.slip{animation:slip .48s ease}.climber.win{animation:victory .7s ease infinite alternate}
-    .head{position:absolute;left:27px;top:0;width:25px;height:25px;border-radius:48% 48% 45% 45%;background:#d99a6c;border:2px solid #532e21;z-index:3}
-    .hair{position:absolute;left:26px;top:-1px;width:27px;height:13px;border-radius:16px 16px 5px 5px;background:#21140f;z-index:4}
-    .body{position:absolute;left:21px;top:24px;width:36px;height:40px;border-radius:10px 10px 7px 7px;background:linear-gradient(180deg,#fff 0 49%,var(--red) 50% 100%);border:2px solid #812033;z-index:2}
-    .arm{position:absolute;top:29px;width:11px;height:43px;border-radius:8px;background:#d99a6c;border:2px solid #6e3a27;transform-origin:top center;z-index:1}
-    .arm.left{left:17px;transform:rotate(38deg)}.arm.right{right:15px;transform:rotate(-38deg)}
-    .leg{position:absolute;top:59px;width:13px;height:34px;border-radius:7px;background:#263d77;border:2px solid #14234b;transform-origin:top center}
-    .leg.left{left:24px;transform:rotate(18deg)}.leg.right{right:20px;transform:rotate(-18deg)}
-    .spark{position:absolute;width:9px;height:9px;border-radius:50%;background:#fff1a8;pointer-events:none;animation:burst .65s ease-out forwards;z-index:7}
-    @keyframes wiggle{50%{transform:translateX(-50%) rotate(5deg) scale(1.03)}}
-    @keyframes slip{25%{transform:translateX(-50%) rotate(-10deg)}65%{transform:translateX(-50%) rotate(9deg)}}
-    @keyframes victory{to{transform:translateX(-50%) translateY(-5px) rotate(3deg)}}
-    @keyframes burst{to{transform:translate(var(--dx),var(--dy)) scale(.1);opacity:0}}
-
-    .game-controls{padding:15px;background:#fff}
-    .progress-row{display:flex;justify-content:space-between;gap:10px;font-size:12px;font-weight:800;margin-bottom:7px;color:#7f3947}
-    .track{height:13px;border-radius:999px;background:#f0e2e1;overflow:hidden;border:1px solid #ead5d7}
-    .bar{height:100%;width:0;background:linear-gradient(90deg,#e31937,#ffbf43);transition:width .15s ease-out}
-    .tap-btn{width:100%;margin-top:13px;min-height:58px;font-size:18px;letter-spacing:.02em}
-    .helper{text-align:center;color:#936470;font-size:12px;margin-top:9px;line-height:1.45}
-    .disclosure{margin-top:13px;background:#fff9ea;border:1px solid #f1dfae;color:#725114;border-radius:14px;padding:11px 12px;font-size:12px;line-height:1.48}
-
-    .modal{position:fixed;inset:0;z-index:50;background:rgba(33,3,10,.76);display:grid;place-items:center;padding:18px;backdrop-filter:blur(5px)}
-    .modal-card{width:min(430px,100%);background:#fff;border-radius:25px;padding:22px;text-align:center;box-shadow:0 25px 70px rgba(0,0,0,.35);position:relative;overflow:hidden}
-    .modal-card:before{content:"";position:absolute;inset:0 0 auto;height:8px;background:linear-gradient(90deg,var(--red),#fff,var(--red))}
-    .result-icon{width:82px;height:82px;border-radius:28px;margin:4px auto 15px;display:grid;place-items:center;font-size:45px;background:#fff1c9}
-    .modal h2{font-size:25px}.modal p{margin-top:8px;color:#7e4f58;line-height:1.5}
-    .prize{font-size:30px;font-weight:1000;color:var(--red2);margin-top:12px}
-    .result-detail{margin-top:13px;background:#fff7f8;border:1px dashed #e9aeba;border-radius:13px;padding:11px;font-size:12px;line-height:1.55}
-    .modal-actions{display:grid;gap:9px;margin-top:16px}
-    .confetti{position:fixed;inset:0;pointer-events:none;z-index:51;overflow:hidden}
-    .confetti i{position:absolute;top:-20px;width:10px;height:18px;background:var(--red);animation:fall 2.4s linear forwards;transform:rotate(20deg)}
-    .confetti i:nth-child(3n){background:#ffd34e}.confetti i:nth-child(4n){background:#fff}.confetti i:nth-child(5n){background:#48c777}
-    @keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:.85}}
-    @media(max-width:560px){.hero{padding-top:15px}.crest{width:53px;height:53px;border-radius:17px;font-size:28px}.content{margin-top:10px}.card{border-radius:18px;padding:15px}.member-info{grid-template-columns:1fr}.scene{height:430px}.pole{height:330px}.top-platform{top:61px}.gifts{top:24px}.game-top{padding:10px}.metric strong{font-size:15px}.game-controls{padding:13px}.modal-card{padding:19px}}
+    .modal{position:fixed;inset:0;z-index:50;background:rgba(33,3,10,.76);display:grid;place-items:center;padding:18px;backdrop-filter:blur(5px)}.modal-card{width:min(440px,100%);background:#fff;border-radius:25px;padding:22px;text-align:center;box-shadow:0 25px 70px rgba(0,0,0,.35);position:relative;overflow:hidden}.modal-card:before{content:"";position:absolute;inset:0 0 auto;height:8px;background:linear-gradient(90deg,var(--red),#fff,var(--red))}
+    .result-icon{width:82px;height:82px;border-radius:28px;margin:4px auto 15px;display:grid;place-items:center;font-size:45px;background:#fff1c9}.modal h2{font-size:24px}.modal p{margin-top:8px;color:#7e4f58;line-height:1.5}.prize{font-size:29px;font-weight:1000;color:var(--red2);margin-top:12px}.result-detail{margin-top:13px;background:#fff7f8;border:1px dashed #e9aeba;border-radius:13px;padding:11px;font-size:12px;line-height:1.6}.modal-actions{display:grid;gap:9px;margin-top:16px}
+    .confetti{position:fixed;inset:0;pointer-events:none;z-index:51;overflow:hidden}.confetti i{position:absolute;top:-20px;width:10px;height:18px;background:var(--red);animation:fall 2.4s linear forwards;transform:rotate(20deg)}.confetti i:nth-child(3n){background:#ffd34e}.confetti i:nth-child(4n){background:#fff}.confetti i:nth-child(5n){background:#48c777}@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:.85}}
+    @media(max-width:650px){.hero{padding-top:14px}.crest{width:53px;height:53px;border-radius:17px;font-size:28px}.content{margin-top:10px}.card{border-radius:18px;padding:15px}.member-info{grid-template-columns:1fr}.picker-grid{grid-template-columns:1fr 1fr}.pick{min-height:150px}.arena{height:500px}.lanes{inset:78px 2px 35px;gap:1px}.pole{width:18px;height:335px}.platform{bottom:331px;width:61px}.gift{bottom:343px;width:31px;height:28px;font-size:16px}.finish-banner{top:48px}.runner{--scale:.68}.lane-label{font-size:7px;padding:4px}.lane.choice .lane-label:after{content:" • PILIHAN"}.race-top{padding:8px}.metric strong{font-size:13px}}
+    @media(max-width:370px){.picker-grid{gap:7px}.pick{padding-left:4px;padding-right:4px}.arena{height:470px}.pole{height:310px}.platform{bottom:306px}.gift{bottom:318px}.runner{--scale:.62}.lane-label{font-size:6px}}
   </style>
 </head>
 <body>
-  <div class="app">
-    <header class="hero">
-      <div class="hero-inner">
-        <div class="crest">🇮🇩</div>
-        <div>
-          <h1>LOMBA PANJAT PINANG</h1>
-          <p>Semangat Merdeka • Cepat, kuat, dan pantang menyerah!</p>
-        </div>
+<div class="app">
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="crest">🇮🇩</div>
+      <div><h1>TEBAK JUARA PANJAT PINANG</h1><p>Pilih 1 dari 4 pemanjat • Balapan berjalan otomatis</p></div>
+    </div>
+  </header>
+
+  <main class="content">
+    <section id="verifyCard" class="card verify-card">
+      <div class="section-title"><h2>Masuk Menggunakan ID</h2><span id="playPill" class="pill">ID SAJA • GAME V15</span></div>
+      <div><label for="memberInput">ID / Username Member</label><input id="memberInput" type="text" maxlength="30" autocomplete="off" placeholder="Masukkan ID member kamu" /></div>
+      <button id="verifyBtn" class="btn primary" type="button">MASUK DENGAN ID</button>
+      <p id="verifyMsg" class="msg" aria-live="polite"></p>
+      <div id="memberInfo" class="member-info hidden">
+        <div class="mini"><span>MEMBER</span><strong id="infoMember">-</strong></div>
+        <div class="mini"><span>SISA KESEMPATAN</span><strong id="infoRemaining">-</strong></div>
+        <div class="mini"><span>BERLAKU SAMPAI</span><strong id="infoExpiry">-</strong></div>
       </div>
-    </header>
+      <button id="enterBtn" class="btn gold hidden" type="button">PILIH PEMANJAT</button>
+      <div class="disclosure">Cara bermain: masukkan ID yang sesuai, pilih satu pemanjat, lalu lihat siapa yang lebih dulu mencapai puncak.</div>
+    </section>
 
-    <main class="content">
-      <section id="verifyCard" class="card verify-card">
-        <div class="section-title">
-          <h2>Masuk Menggunakan ID</h2>
-          <span id="playPill" class="pill">ID SAJA • GITHUB V10</span>
-        </div>
-        <div>
-          <label for="memberInput">ID / Username Member</label>
-          <input id="memberInput" type="text" maxlength="30" autocomplete="off" placeholder="Masukkan ID member kamu" />
-        </div>
-        <button id="verifyBtn" class="btn primary" type="button">MASUK DENGAN ID</button>
-        <p id="verifyMsg" class="msg" aria-live="polite"></p>
-
-        <div id="memberInfo" class="member-info hidden">
-          <div class="mini"><span>MEMBER</span><strong id="infoMember">-</strong></div>
-          <div class="mini"><span>SISA KESEMPATAN</span><strong id="infoRemaining">-</strong></div>
-          <div class="mini"><span>BERLAKU SAMPAI</span><strong id="infoExpiry">-</strong></div>
-        </div>
-        <button id="enterBtn" class="btn gold hidden" type="button">MULAI PERMAINAN</button>
-        <div class="disclosure">Tidak ada kode tambahan. Cukup masukkan ID yang didaftarkan oleh agent, lalu langsung bermain.</div>
-      </section>
-
-      <section id="gameCard" class="card game-card hidden">
-        <div class="game-top">
-          <div class="metric"><span>WAKTU</span><strong id="timer">15.0</strong></div>
-          <div class="metric"><span>TEKANAN</span><strong id="tapCount">0</strong></div>
-          <div class="metric"><span>POSISI</span><strong id="progressText">0%</strong></div>
-        </div>
-
-        <div id="scene" class="scene" aria-label="Arena permainan panjat pinang">
-          <div class="sun"></div>
-          <div class="flags"></div>
-          <div class="gifts"><div class="gift">🎁</div><div class="gift">🏆</div><div class="gift">💰</div></div>
-          <div class="top-platform"></div>
-          <div class="pole-shadow"></div>
-          <div class="pole"></div>
-          <div class="crowd"></div>
-          <div id="climber" class="climber">
-            <div class="hair"></div><div class="head"></div><div class="body"></div>
-            <div class="arm left"></div><div class="arm right"></div>
-            <div class="leg left"></div><div class="leg right"></div>
-          </div>
-        </div>
-
-        <div class="game-controls">
-          <div class="progress-row"><span>PROGRES PANJAT</span><span id="statusText">Siap memanjat</span></div>
-          <div class="track"><div id="progressBar" class="bar"></div></div>
-          <button id="tapBtn" class="btn primary tap-btn" type="button">🖐️ TEKAN CEPAT UNTUK PANJAT!</button>
-          <p class="helper">Tekan tombol secepat mungkin. Di komputer, kamu juga bisa menekan tombol <b>SPASI</b>.</p>
-        </div>
-      </section>
-    </main>
-  </div>
-
-  <div id="resultModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
-    <div class="modal-card">
-      <div id="resultIcon" class="result-icon">🏆</div>
-      <h2 id="resultTitle">Hasil Permainan</h2>
-      <p id="resultMessage"></p>
-      <div id="prizeText" class="prize"></div>
-      <div id="resultDetail" class="result-detail"></div>
-      <div class="modal-actions">
-        <button id="nextPlayBtn" class="btn primary hidden" type="button">MAIN LAGI</button>
-        <button id="closeResultBtn" class="btn ghost" type="button">SELESAI</button>
+    <section id="pickCard" class="card pick-card hidden">
+      <div class="pick-head"><h2>Pilih 1 Pemanjat Andalanmu</h2><p>Pilihan tidak dapat diubah setelah balapan dimulai.</p></div>
+      <div id="pickerGrid" class="picker-grid"></div>
+      <div class="pick-actions">
+        <div id="selectedNote" class="selected-note">Belum ada pemanjat yang dipilih.</div>
+        <button id="startRaceBtn" class="btn primary" type="button" disabled>MULAI BALAPAN</button>
+        <button id="backBtn" class="btn ghost" type="button">KEMBALI</button>
       </div>
+    </section>
+
+    <section id="raceCard" class="card race-card hidden">
+      <div class="race-top">
+        <div class="metric"><span>WAKTU</span><strong id="raceTimer">0.0</strong></div>
+        <div class="metric"><span>PILIHANMU</span><strong id="choiceText">-</strong></div>
+        <div class="metric"><span>PEMIMPIN</span><strong id="leaderText">-</strong></div>
+      </div>
+      <div id="arena" class="arena" aria-label="Arena balapan empat pemanjat">
+        <div class="sun"></div><div class="finish-banner">🏆 GARIS PUNCAK</div>
+        <div id="lanes" class="lanes"></div><div class="crowd"></div>
+        <div id="countdown" class="countdown hidden"><strong id="countdownText">3</strong></div>
+      </div>
+      <div class="race-footer"><div id="raceStatus" class="race-status">Bersiap...</div><div class="progress-track"><div id="raceProgress" class="progress-bar"></div></div></div>
+    </section>
+  </main>
+</div>
+
+<div id="resultModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
+  <div class="modal-card">
+    <div id="resultIcon" class="result-icon">🏆</div>
+    <h2 id="resultTitle">Hasil Balapan</h2>
+    <p id="resultMessage"></p>
+    <div id="prizeText" class="prize"></div>
+    <div id="resultDetail" class="result-detail"></div>
+    <div class="modal-actions">
+      <button id="nextPlayBtn" class="btn primary hidden" type="button">TEBAK LAGI</button>
+      <button id="closeResultBtn" class="btn ghost" type="button">SELESAI</button>
     </div>
   </div>
-  <div id="confetti" class="confetti hidden"></div>
+</div>
+<div id="confetti" class="confetti hidden"></div>
 
-  <script>
-    const PUBLIC_JWK = {"kty":"EC","crv":"P-256","x":"e614dy_nGyn_uuvkOYPzQY81d6vM-mvbu6-HfiynvC8","y":"CTQaF-pcMhZ5e_veM6xxUXZ765Uq3mfzeaHPyIfzuB0","ext":true,"key_ops":["verify"]};
-    const $ = id => document.getElementById(id);
-    const escapeHtml = value => String(value).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","\'":"&#39;"}[ch]));
-    let linkPayload = null;
-    let currentRound = null;
-    let currentRoundIndex = -1;
-    let verifiedMember = false;
-    let active = false, finished = false, progress = 0, taps = 0, duration = 15, timeLeft = 15, timerHandle = null, lastTick = 0;
+<script>
+const PUBLIC_JWK={"kty":"EC","crv":"P-256","x":"e614dy_nGyn_uuvkOYPzQY81d6vM-mvbu6-HfiynvC8","y":"CTQaF-pcMhZ5e_veM6xxUXZ765Uq3mfzeaHPyIfzuB0","ext":true,"key_ops":["verify"]};
+const $=id=>document.getElementById(id);
+const escapeHtml=value=>String(value).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[ch]));
+const CLIMBERS=[
+  {id:0,name:"MERAH",color:"#df1637"},{id:1,name:"BIRU",color:"#176bd7"},{id:2,name:"EMAS",color:"#e5a51b"},{id:3,name:"HIJAU",color:"#15965b"}
+];
+let linkPayload=null,currentRound=null,currentRoundIndex=-1,verifiedMember=false,selectedClimber=null;
+let raceActive=false,raceFinished=false,raceStart=0,raceDuration=8200,raceFrame=null,winnerId=-1,progresses=[0,0,0,0],finishProfiles=[];
 
-    function fromB64url(str){const base64=str.replace(/-/g,"+").replace(/_/g,"/")+"===".slice((str.length+3)%4);const binary=atob(base64);return Uint8Array.from(binary,c=>c.charCodeAt(0));}
-    function b64urlToText(str){return new TextDecoder().decode(fromB64url(str));}
-    function formatDate(ts){return new Intl.DateTimeFormat("id-ID",{dateStyle:"medium",timeStyle:"short"}).format(new Date(ts));}
-    function formatRupiah(value){return new Intl.NumberFormat("id-ID",{style:"currency",currency:"IDR",maximumFractionDigits:0}).format(value);}
+function fromB64url(str){const base64=str.replace(/-/g,"+").replace(/_/g,"/")+"===".slice((str.length+3)%4);const binary=atob(base64);return Uint8Array.from(binary,c=>c.charCodeAt(0));}
+function b64urlToText(str){return new TextDecoder().decode(fromB64url(str));}
+function formatDate(ts){return new Intl.DateTimeFormat("id-ID",{dateStyle:"medium",timeStyle:"short"}).format(new Date(ts));}
+function formatRupiah(value){return new Intl.NumberFormat("id-ID",{style:"currency",currency:"IDR",maximumFractionDigits:0}).format(value);}
+async function verifySignature(payloadPart,signaturePart,messageMode="part"){
+  if(!window.crypto||!crypto.subtle)throw new Error("Browser ini tidak mendukung pemeriksaan link. Gunakan Chrome, Safari, atau browser utama.");
+  const key=await crypto.subtle.importKey("jwk",PUBLIC_JWK,{name:"ECDSA",namedCurve:"P-256"},false,["verify"]);
+  const message=messageMode==="text"?b64urlToText(payloadPart):payloadPart;
+  return crypto.subtle.verify({name:"ECDSA",hash:"SHA-256"},key,fromB64url(signaturePart),new TextEncoder().encode(message));
+}
+function cleanSignedValue(value){let result=String(value||"").trim().replace(/\s+/g,"");for(let i=0;i<2;i++){try{const decoded=decodeURIComponent(result);if(decoded===result)break;result=decoded;}catch{break;}}return result;}
+function getSignedData(){const pageUrl=new URL(location.href);let value=pageUrl.searchParams.get("play")||pageUrl.searchParams.get("p")||"";if(!value){const rawHash=location.hash.replace(/^#\??/,"");const hashParams=new URLSearchParams(rawHash);value=hashParams.get("play")||hashParams.get("p")||"";}return cleanSignedValue(value);}
+function getProgressMap(){try{return JSON.parse(localStorage.getItem("pp_member_progress_v2")||"{}");}catch{return{};}}
+function getPlayedCount(){if(!linkPayload)return 0;const map=getProgressMap();return Math.max(0,Math.min(linkPayload.rounds.length,Number(map[linkPayload.campaignId])||0));}
+function consumePlay(){const map=getProgressMap();const index=getPlayedCount();map[linkPayload.campaignId]=index+1;localStorage.setItem("pp_member_progress_v2",JSON.stringify(map));return index;}
+function remainingCount(){return linkPayload?Math.max(0,linkPayload.rounds.length-getPlayedCount()):0;}
+function normalizePayload(raw){
+  if(raw&&raw.v===4&&raw.g==="PP4"&&Array.isArray(raw.r))return {v:4,game:"PANJAT_PINANG_GUESS",member:String(raw.m||"").trim().toUpperCase(),campaignId:String(raw.c||""),issuedAt:Number(raw.i)||0,expiresAt:Number(raw.e)||0,difficulty:raw.d==="e"?"easy":raw.d==="h"?"hard":"normal",rounds:raw.r.map(value=>{const prize=Math.max(0,Number(value)||0);return {outcome:prize>0?"WIN":"LOSE",prize,label:prize>0?`TEBAKAN BENAR ${formatRupiah(prize)}`:"TEBAKAN SALAH"};})};
+  if(raw&&raw.v===3&&raw.g==="PP"&&Array.isArray(raw.r))return {v:3,game:"PANJAT_PINANG_GUESS",member:String(raw.m||"").trim().toUpperCase(),campaignId:String(raw.c||""),issuedAt:Number(raw.i)||0,expiresAt:Number(raw.e)||0,difficulty:raw.d==="e"?"easy":raw.d==="h"?"hard":"normal",rounds:raw.r.map(value=>{const prize=Math.max(0,Number(value)||0);return {outcome:prize>0?"WIN":"LOSE",prize,label:prize>0?`TEBAKAN BENAR ${formatRupiah(prize)}`:"TEBAKAN SALAH"};})};
+  if(raw&&raw.v===2&&raw.game==="PANJAT_PINANG_LINK"&&Array.isArray(raw.rounds))return raw;
+  throw new Error("Link bukan untuk permainan ini atau versinya tidak didukung.");
+}
+async function loadLink(){
+  const code=getSignedData();if(!code)throw new Error("Data permainan tidak ditemukan di dalam link. Minta link baru dari agent.");
+  const parts=code.split(".");if(parts.length!==2||!parts[0]||!parts[1])throw new Error("Link bermain tidak lengkap atau terpotong saat dikirim.");
+  let raw;try{raw=JSON.parse(b64urlToText(parts[0]));}catch{throw new Error("Data pada link tidak dapat dibaca. Minta agent membuat link baru.");}
+  const mode=raw&&raw.v>=3?"part":"text";const valid=await verifySignature(parts[0],parts[1],mode);if(!valid)throw new Error("Link bermain tidak sah atau sudah berubah.");
+  const payload=normalizePayload(raw);if(!payload.member||!payload.campaignId||!payload.rounds.length)throw new Error("Data ID atau kesempatan bermain tidak lengkap.");if(Date.now()>payload.expiresAt)throw new Error("Link bermain sudah kedaluwarsa. Minta link baru dari agent.");
+  linkPayload=payload;$('playPill').textContent=`${payload.rounds.length} KESEMPATAN • PILIH 1 DARI 4`;return payload;
+}
+function showVerify(text,ok){$('verifyMsg').textContent=text;$('verifyMsg').className=`msg ${ok?'ok':'error'}`;}
+function updateMemberInfo(){if(!linkPayload)return;const remaining=remainingCount();$('infoMember').textContent=linkPayload.member;$('infoRemaining').textContent=`${remaining} dari ${linkPayload.rounds.length}`;$('infoExpiry').textContent=formatDate(linkPayload.expiresAt);$('memberInfo').classList.remove('hidden');$('enterBtn').classList.toggle('hidden',remaining<=0);$('enterBtn').textContent=remaining>0?`PILIH PEMANJAT • SISA ${remaining}x`:'KESEMPATAN HABIS';}
+async function verifyMember(){const member=$('memberInput').value.trim().toUpperCase();$('memberInfo').classList.add('hidden');$('enterBtn').classList.add('hidden');verifiedMember=false;if(!member){showVerify('Masukkan ID member terlebih dahulu.',false);return;}try{if(!linkPayload)await loadLink();if(Date.now()>linkPayload.expiresAt)throw new Error('Link bermain sudah kedaluwarsa.');if(linkPayload.member!==member)throw new Error('ID tidak sesuai dengan link yang diberikan agent.');if(remainingCount()<=0)throw new Error('Semua kesempatan untuk ID ini sudah digunakan di perangkat ini.');verifiedMember=true;updateMemberInfo();showVerify('ID sesuai. Silakan pilih satu dari empat pemanjat.',true);}catch(err){showVerify(err.message||'Link tidak dapat dibuka.',false);}}
+function avatarHtml(c){return `<div class="choice-badge">PILIHANMU</div><div class="pick-number" style="--runner:${c.color}">${c.id+1}</div><div class="avatar" style="--runner:${c.color}"><div class="hair"></div><div class="head"></div><div class="body"></div><div class="arm left"></div><div class="arm right"></div><div class="leg left"></div><div class="leg right"></div></div><strong>PEMANJAT ${c.name}</strong><small>NOMOR ${c.id+1}</small>`;}
+function renderPicker(){selectedClimber=null;$('pickerGrid').innerHTML=CLIMBERS.map(c=>`<button class="pick" data-id="${c.id}" style="--runner:${c.color}" type="button">${avatarHtml(c)}</button>`).join('');$('selectedNote').textContent='Belum ada pemanjat yang dipilih.';$('startRaceBtn').disabled=true;document.querySelectorAll('.pick').forEach(btn=>btn.addEventListener('click',()=>selectClimber(Number(btn.dataset.id))));}
+function selectClimber(id){selectedClimber=id;document.querySelectorAll('.pick').forEach(btn=>btn.classList.toggle('selected',Number(btn.dataset.id)===id));$('selectedNote').textContent=`Pilihanmu: PEMANJAT ${CLIMBERS[id].name} • NOMOR ${id+1}`;$('startRaceBtn').disabled=false;}
+function enterPicker(){if(!verifiedMember||remainingCount()<=0)return;renderPicker();$('verifyCard').classList.add('hidden');$('raceCard').classList.add('hidden');$('pickCard').classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'});}
+function backToVerify(){$('pickCard').classList.add('hidden');$('verifyCard').classList.remove('hidden');updateMemberInfo();window.scrollTo({top:0,behavior:'smooth'});}
+function seededIndex(seed,mod){let h=2166136261;for(let i=0;i<seed.length;i++){h^=seed.charCodeAt(i);h=Math.imul(h,16777619);}return Math.abs(h>>>0)%mod;}
+function chooseWinner(){if(currentRound.outcome==='WIN')return selectedClimber;const others=CLIMBERS.map(c=>c.id).filter(id=>id!==selectedClimber);return others[seededIndex(`${linkPayload.campaignId}-${currentRoundIndex}-${selectedClimber}`,others.length)];}
+function laneHtml(c){return `<div class="lane ${c.id===selectedClimber?'choice':''}" data-lane="${c.id}" style="--runner:${c.color}"><div class="gift">🎁</div><div class="platform"></div><div class="pole"></div><div id="runner${c.id}" class="runner" style="--runner:${c.color}"><div class="hair"></div><div class="head"></div><div class="body"></div><div class="arm left"></div><div class="arm right"></div><div class="leg left"></div><div class="leg right"></div></div><div class="lane-label">${c.id+1}. ${c.name}</div></div>`;}
+function prepareRace(){currentRoundIndex=consumePlay();currentRound=linkPayload.rounds[currentRoundIndex];winnerId=chooseWinner();progresses=[0,0,0,0];raceFinished=false;raceActive=false;raceDuration=linkPayload.difficulty==='hard'?7600:linkPayload.difficulty==='easy'?9000:8200;finishProfiles=CLIMBERS.map(c=>c.id===winnerId?100:76+seededIndex(`${linkPayload.campaignId}-${currentRoundIndex}-${c.id}`,19));$('lanes').innerHTML=CLIMBERS.map(laneHtml).join('');$('choiceText').textContent=`${selectedClimber+1}. ${CLIMBERS[selectedClimber].name}`;$('leaderText').textContent='-';$('raceTimer').textContent=(raceDuration/1000).toFixed(1);$('raceProgress').style.width='0%';$('raceStatus').textContent='Balapan akan segera dimulai...';$('pickCard').classList.add('hidden');$('raceCard').classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'});runCountdown();}
+function runCountdown(){const box=$('countdown'),text=$('countdownText');box.classList.remove('hidden');let value=3;text.textContent=value;const interval=setInterval(()=>{value--;if(value>0){text.textContent=value;text.style.animation='none';void text.offsetWidth;text.style.animation='pop .7s ease-out';return;}if(value===0){text.textContent='MULAI!';text.style.fontSize='30px';return;}clearInterval(interval);box.classList.add('hidden');text.style.fontSize='64px';startRace();},780);}
+function smoothStep(x){return x*x*(3-2*x);}
+function startRace(){raceActive=true;raceStart=performance.now();document.querySelectorAll('.runner').forEach(r=>r.classList.add('moving'));$('raceStatus').textContent='Empat pemanjat mulai berlomba menuju puncak!';raceFrame=requestAnimationFrame(tickRace);}
+function tickRace(now){if(!raceActive)return;const elapsed=now-raceStart;const t=Math.min(1,elapsed/raceDuration);const eased=smoothStep(t);let leader=0,leaderP=-1;progresses=CLIMBERS.map(c=>{const phase=(c.id+1)*0.72;const wobble=(Math.sin(elapsed/290+phase)*2.8+Math.sin(elapsed/710+phase)*1.7)*(1-t);let base=finishProfiles[c.id]*eased+wobble;if(c.id===winnerId&&t>.91)base=Math.max(base,92+(t-.91)/.09*8);base=Math.max(0,Math.min(c.id===winnerId?100:finishProfiles[c.id],base));if(base>leaderP){leaderP=base;leader=c.id;}return base;});updateRaceUI(leader,t);if(t>=1){finishRace();return;}raceFrame=requestAnimationFrame(tickRace);}
+function updateRaceUI(leader,t){const arenaHeight=$('arena').clientHeight||570;const maxTravel=window.innerWidth<=650?300:356;CLIMBERS.forEach(c=>{const runner=$(`runner${c.id}`);if(runner)runner.style.bottom=`${5+(progresses[c.id]/100)*maxTravel}px`;});document.querySelectorAll('.runner').forEach((r,i)=>r.classList.toggle('leader',i===leader));$('leaderText').textContent=`${leader+1}. ${CLIMBERS[leader].name}`;$('raceTimer').textContent=Math.max(0,(raceDuration*(1-t)/1000)).toFixed(1);$('raceProgress').style.width=`${Math.round(t*100)}%`;if(t>.78)$('raceStatus').textContent='Sedikit lagi menuju puncak!';else if(t>.42)$('raceStatus').textContent='Persaingan semakin ketat!';}
+function finishRace(){raceActive=false;raceFinished=true;cancelAnimationFrame(raceFrame);document.querySelectorAll('.runner').forEach(r=>{r.classList.remove('moving','leader')});const winner=$(`runner${winnerId}`);if(winner)winner.classList.add('winner');$('leaderText').textContent=`${winnerId+1}. ${CLIMBERS[winnerId].name}`;$('raceTimer').textContent='0.0';$('raceProgress').style.width='100%';$('raceStatus').textContent=`PEMANJAT ${CLIMBERS[winnerId].name} menjadi juara!`;setTimeout(showResult,900);}
+function showResult(){const win=winnerId===selectedClimber;const remaining=remainingCount();$('resultIcon').textContent=win?'🏆':'😢';$('resultTitle').textContent=win?'TEBAKANMU BENAR!':'TEBAKANMU BELUM TEPAT';$('resultMessage').textContent=win?`Pemanjat ${CLIMBERS[selectedClimber].name} yang kamu pilih berhasil menjadi juara.`:`Juara balapan adalah Pemanjat ${CLIMBERS[winnerId].name}, sedangkan pilihanmu Pemanjat ${CLIMBERS[selectedClimber].name}.`;$('prizeText').textContent=win?formatRupiah(currentRound.prize):'BELUM BERUNTUNG';$('resultDetail').innerHTML=win?`<strong>ID MEMBER: ${escapeHtml(linkPayload.member)}</strong><br>Pilihan: <strong>${selectedClimber+1}. ${CLIMBERS[selectedClimber].name}</strong><br>Juara: <strong>${winnerId+1}. ${CLIMBERS[winnerId].name}</strong><br>Screenshot hasil ini dan tunjukkan kepada agent.`:`ID MEMBER: <strong>${escapeHtml(linkPayload.member)}</strong><br>Pilihan: <strong>${selectedClimber+1}. ${CLIMBERS[selectedClimber].name}</strong><br>Juara: <strong>${winnerId+1}. ${CLIMBERS[winnerId].name}</strong><br>Sisa kesempatan: <strong>${remaining}x</strong>`;$('nextPlayBtn').classList.toggle('hidden',remaining<=0);$('nextPlayBtn').textContent=`TEBAK LAGI • SISA ${remaining}x`;$('resultModal').classList.remove('hidden');if(win)launchConfetti();}
+function launchConfetti(){const box=$('confetti');box.innerHTML='';box.classList.remove('hidden');for(let i=0;i<48;i++){const piece=document.createElement('i');piece.style.left=`${Math.random()*100}%`;piece.style.animationDelay=`${Math.random()*.65}s`;piece.style.animationDuration=`${1.7+Math.random()*1.4}s`;box.appendChild(piece);}setTimeout(()=>box.classList.add('hidden'),3400);}
+function nextPlay(){$('resultModal').classList.add('hidden');$('confetti').classList.add('hidden');$('raceCard').classList.add('hidden');enterPicker();}
+function returnToEntry(){$('resultModal').classList.add('hidden');$('confetti').classList.add('hidden');$('raceCard').classList.add('hidden');$('pickCard').classList.add('hidden');$('verifyCard').classList.remove('hidden');updateMemberInfo();const remaining=remainingCount();showVerify(remaining>0?`Masih ada ${remaining} kesempatan untuk menebak.`:'Semua kesempatan sudah selesai.',remaining>0);window.scrollTo({top:0,behavior:'smooth'});}
 
-    async function verifySignature(payloadPart,signaturePart,messageMode="part"){
-      if(!window.crypto||!crypto.subtle)throw new Error("Browser ini tidak mendukung pemeriksaan link. Buka link menggunakan Chrome, Safari, atau browser utama.");
-      const key=await crypto.subtle.importKey("jwk",PUBLIC_JWK,{name:"ECDSA",namedCurve:"P-256"},false,["verify"]);
-      const message=messageMode==="text"?b64urlToText(payloadPart):payloadPart;
-      return crypto.subtle.verify({name:"ECDSA",hash:"SHA-256"},key,fromB64url(signaturePart),new TextEncoder().encode(message));
-    }
-
-    function cleanSignedValue(value){
-      let result=String(value||"").trim().replace(/\s+/g,"");
-      for(let i=0;i<2;i++){
-        try{const decoded=decodeURIComponent(result);if(decoded===result)break;result=decoded;}catch{break;}
-      }
-      return result;
-    }
-
-    function getSignedData(){
-      const pageUrl=new URL(location.href);
-      let value=pageUrl.searchParams.get("play")||pageUrl.searchParams.get("p")||"";
-      if(!value){
-        const rawHash=location.hash.replace(/^#\??/,"");
-        const hashParams=new URLSearchParams(rawHash);
-        value=hashParams.get("play")||hashParams.get("p")||"";
-      }
-      return cleanSignedValue(value);
-    }
-    function getProgressMap(){try{return JSON.parse(localStorage.getItem("pp_member_progress_v2")||"{}");}catch{return{};}}
-    function getPlayedCount(){if(!linkPayload)return 0;const map=getProgressMap();return Math.max(0,Math.min(linkPayload.rounds.length,Number(map[linkPayload.campaignId])||0));}
-    function consumePlay(){const map=getProgressMap();const index=getPlayedCount();map[linkPayload.campaignId]=index+1;localStorage.setItem("pp_member_progress_v2",JSON.stringify(map));return index;}
-    function remainingCount(){return linkPayload?Math.max(0,linkPayload.rounds.length-getPlayedCount()):0;}
-
-    function normalizePayload(raw){
-      // V3: format link ringkas dan stabil.
-      if(raw&&raw.v===3&&raw.g==="PP"&&Array.isArray(raw.r)){
-        return {
-          v:3,
-          game:"PANJAT_PINANG_LINK",
-          member:String(raw.m||"").trim().toUpperCase(),
-          campaignId:String(raw.c||""),
-          issuedAt:Number(raw.i)||0,
-          expiresAt:Number(raw.e)||0,
-          difficulty:raw.d==="e"?"easy":raw.d==="h"?"hard":"normal",
-          rounds:raw.r.map(value=>{const prize=Math.max(0,Number(value)||0);return {outcome:prize>0?"WIN":"LOSE",prize,label:prize>0?`MENANG ${formatRupiah(prize)}`:"BELUM BERUNTUNG"};})
-        };
-      }
-      // Tetap mendukung link V2 yang pernah dibuat panel sebelumnya.
-      if(raw&&raw.v===2&&raw.game==="PANJAT_PINANG_LINK"&&Array.isArray(raw.rounds))return raw;
-      throw new Error("Link bukan untuk permainan ini atau versinya tidak didukung.");
-    }
-
-    async function loadLink(){
-      const code=getSignedData();
-      if(!code)throw new Error("Data permainan tidak ditemukan di dalam link. Buat link baru dari Panel Agent GitHub V10 lalu kirim link lengkap kepada member.");
-      const parts=code.split(".");
-      if(parts.length!==2||!parts[0]||!parts[1])throw new Error("Link bermain tidak lengkap atau terpotong saat dikirim.");
-
-      let raw;
-      try{raw=JSON.parse(b64urlToText(parts[0]));}catch{throw new Error("Data pada link tidak dapat dibaca. Buat link baru dari panel agent.");}
-
-      // V3 ditandatangani memakai payloadPart; V2 memakai teks JSON asli.
-      const mode=raw&&raw.v===3?"part":"text";
-      const valid=await verifySignature(parts[0],parts[1],mode);
-      if(!valid)throw new Error("Link bermain tidak sah atau sudah berubah. Salin ulang link langsung dari panel agent.");
-
-      const payload=normalizePayload(raw);
-      if(!payload.member||!payload.campaignId||!payload.rounds.length)throw new Error("Data ID atau kesempatan bermain pada link tidak lengkap.");
-      if(Date.now()>payload.expiresAt)throw new Error("Link bermain sudah kedaluwarsa. Minta link baru dari agent.");
-      linkPayload=payload;
-      $("playPill").textContent=`${payload.rounds.length} KESEMPATAN BERMAIN`;
-      return payload;
-    }
-
-    function showVerify(text,ok){$("verifyMsg").textContent=text;$("verifyMsg").className=`msg ${ok?"ok":"error"}`;}
-    function updateMemberInfo(){
-      if(!linkPayload)return;
-      const remaining=remainingCount();
-      $("infoMember").textContent=linkPayload.member;
-      $("infoRemaining").textContent=`${remaining} dari ${linkPayload.rounds.length}`;
-      $("infoExpiry").textContent=formatDate(linkPayload.expiresAt);
-      $("memberInfo").classList.remove("hidden");
-      $("enterBtn").classList.toggle("hidden",remaining<=0);
-      $("enterBtn").textContent=remaining>0?`MULAI PERMAINAN • SISA ${remaining}x`:"KESEMPATAN HABIS";
-    }
-
-    async function verifyMember(){
-      const member=$("memberInput").value.trim().toUpperCase();
-      $("memberInfo").classList.add("hidden");$("enterBtn").classList.add("hidden");verifiedMember=false;
-      if(!member){showVerify("Masukkan ID member terlebih dahulu.",false);return;}
-      try{
-        if(!linkPayload)await loadLink();
-        if(Date.now()>linkPayload.expiresAt)throw new Error("Link bermain sudah kedaluwarsa.");
-        if(linkPayload.member!==member)throw new Error("ID tidak sesuai dengan link yang diberikan agent.");
-        if(remainingCount()<=0)throw new Error("Semua kesempatan bermain untuk ID ini sudah digunakan di perangkat ini.");
-        verifiedMember=true;updateMemberInfo();showVerify("ID sesuai. Tekan tombol mulai untuk masuk ke arena.",true);
-      }catch(err){showVerify(err.message||"Link tidak dapat dibuka.",false);}
-    }
-
-    function enterGame(){
-      if(!verifiedMember||!linkPayload)return;
-      if(remainingCount()<=0){showVerify("Kesempatan bermain sudah habis.",false);updateMemberInfo();return;}
-      currentRoundIndex=consumePlay();currentRound=linkPayload.rounds[currentRoundIndex];
-      $("verifyCard").classList.add("hidden");$("gameCard").classList.remove("hidden");
-      resetGameState();startGame();window.scrollTo({top:0,behavior:"smooth"});
-    }
-
-    function resetGameState(){
-      active=false;finished=false;progress=0;taps=0;
-      duration=linkPayload.difficulty==="hard"?14:linkPayload.difficulty==="easy"?17:15;timeLeft=duration;
-      updateUI();$("statusText").textContent=`Kesempatan ${currentRoundIndex+1} dimulai`;$("tapBtn").disabled=false;$("climber").className="climber";
-    }
-    function startGame(){active=true;lastTick=performance.now();$("statusText").textContent="Ayo panjat!";timerHandle=requestAnimationFrame(tick);}
-    function tick(now){
-      if(!active)return;const delta=(now-lastTick)/1000;lastTick=now;timeLeft=Math.max(0,timeLeft-delta);
-      if(currentRound.outcome==="WIN"&&timeLeft<=1.8&&progress<98)progress=Math.min(98,progress+delta*18);
-      updateUI();
-      if(timeLeft<=0){if(currentRound.outcome==="WIN"){progress=100;updateUI();finishGame(true);}else{performSlip(true);setTimeout(()=>finishGame(false),460);}return;}
-      timerHandle=requestAnimationFrame(tick);
-    }
-    function handleTap(event){
-      if(event)event.preventDefault();if(!active||finished)return;taps++;
-      const difficulty=linkPayload.difficulty;let gain=difficulty==="easy"?4.8:difficulty==="hard"?2.65:3.55;gain+=Math.random()*1.2;
-      if(currentRound.outcome==="WIN"){const cap=taps<13?86:100;progress=Math.min(cap,progress+gain);if(progress>=100)finishGame(true);}
-      else{progress=Math.min(88,progress+gain*.85);if(taps%7===0||Math.random()<.08)performSlip(false);}
-      animateClimber();createSpark();updateUI();
-    }
-    function performSlip(finalSlip){if(finished)return;const climber=$("climber");climber.classList.remove("boost");climber.classList.add("slip");progress=Math.max(finalSlip?28:8,progress-(finalSlip?42:7+Math.random()*6));$("statusText").textContent=finalSlip?"Terpeleset!":"Licin! Bertahan!";updateUI();setTimeout(()=>climber.classList.remove("slip"),500);}
-    function animateClimber(){const climber=$("climber");climber.classList.remove("boost");void climber.offsetWidth;climber.classList.add("boost");setTimeout(()=>climber.classList.remove("boost"),180);}
-    function createSpark(){const scene=$("scene"),spark=document.createElement("i");spark.className="spark";spark.style.left=`${50+(Math.random()*10-5)}%`;spark.style.bottom=`${50+progress*3.15}px`;spark.style.setProperty("--dx",`${Math.random()*80-40}px`);spark.style.setProperty("--dy",`${-30-Math.random()*50}px`);scene.appendChild(spark);setTimeout(()=>spark.remove(),700);}
-    function updateUI(){const sceneHeight=$("scene").clientHeight||470,maxTravel=Math.max(250,sceneHeight-145),bottom=43+(progress/100)*maxTravel;$("climber").style.bottom=`${bottom}px`;$("timer").textContent=timeLeft.toFixed(1);$("tapCount").textContent=taps;$("progressText").textContent=`${Math.round(progress)}%`;$("progressBar").style.width=`${progress}%`;if(active){if(progress>80)$("statusText").textContent="Sedikit lagi!";else if(progress>45)$("statusText").textContent="Terus naik!";else if(progress>10)$("statusText").textContent="Bagus, lanjutkan!";}}
-    function finishGame(win){if(finished)return;finished=true;active=false;cancelAnimationFrame(timerHandle);$("tapBtn").disabled=true;if(win){progress=100;updateUI();$("climber").classList.add("win");$("statusText").textContent="Berhasil mencapai puncak!";setTimeout(()=>showResult(true),700);}else{$("statusText").textContent="Waktu habis";setTimeout(()=>showResult(false),350);}}
-
-    function showResult(win){
-      const remaining=remainingCount();
-      $("resultIcon").textContent=win?"🏆":"💪";$("resultTitle").textContent=win?"SELAMAT, KAMU BERHASIL!":"TETAP SEMANGAT!";
-      $("resultMessage").textContent=win?`Kesempatan ke-${currentRoundIndex+1} berhasil mencapai puncak.`:`Kesempatan ke-${currentRoundIndex+1} belum berhasil mencapai puncak.`;
-      $("prizeText").textContent=win?formatRupiah(currentRound.prize):"BELUM BERUNTUNG";
-      $("resultDetail").innerHTML=win?`<strong>ID MEMBER: ${escapeHtml(linkPayload.member)}</strong><br>Hadiah sudah tercatat untuk kesempatan ke-${currentRoundIndex+1}. Tunjukkan atau screenshot hasil ini kepada agent.`:`ID MEMBER: <strong>${escapeHtml(linkPayload.member)}</strong><br>Sisa kesempatan bermain: <strong>${remaining}x</strong>`;
-      $("nextPlayBtn").classList.toggle("hidden",remaining<=0);$("nextPlayBtn").textContent=`MAIN LAGI • SISA ${remaining}x`;
-      $("resultModal").classList.remove("hidden");if(win)launchConfetti();
-    }
-    function launchConfetti(){const box=$("confetti");box.innerHTML="";box.classList.remove("hidden");for(let i=0;i<46;i++){const piece=document.createElement("i");piece.style.left=`${Math.random()*100}%`;piece.style.animationDelay=`${Math.random()*.65}s`;piece.style.animationDuration=`${1.7+Math.random()*1.4}s`;box.appendChild(piece);}setTimeout(()=>box.classList.add("hidden"),3400);}
-    function returnToEntry(){
-      $("resultModal").classList.add("hidden");$("confetti").classList.add("hidden");$("gameCard").classList.add("hidden");$("verifyCard").classList.remove("hidden");updateMemberInfo();
-      const remaining=remainingCount();showVerify(remaining>0?`Masih ada ${remaining} kesempatan bermain.`:"Semua kesempatan bermain sudah selesai.",remaining>0);window.scrollTo({top:0,behavior:"smooth"});
-    }
-
-    $("verifyBtn").addEventListener("click",()=>verifyMember());$("enterBtn").addEventListener("click",enterGame);$("tapBtn").addEventListener("pointerdown",handleTap);$("scene").addEventListener("pointerdown",handleTap);
-    document.addEventListener("keydown",e=>{if(e.code==="Space"&&active)handleTap(e);if(e.key==="Enter"&&!verifiedMember)verifyMember();});
-    $("nextPlayBtn").addEventListener("click",()=>{$("resultModal").classList.add("hidden");$("confetti").classList.add("hidden");enterGame();});
-    $("closeResultBtn").addEventListener("click",returnToEntry);
-
-    loadLink().then(()=>showVerify("Link aktif. Cukup masukkan ID member untuk bermain.",true)).catch(err=>{showVerify(err.message,false);$("verifyBtn").disabled=true;$("memberInput").disabled=true;});
-  </script>
+$('memberInput').addEventListener('input',e=>{e.target.value=e.target.value.toUpperCase().replace(/[^A-Z0-9._-]/g,'');});
+$('verifyBtn').addEventListener('click',verifyMember);$('memberInput').addEventListener('keydown',e=>{if(e.key==='Enter')verifyMember();});$('enterBtn').addEventListener('click',enterPicker);$('backBtn').addEventListener('click',backToVerify);$('startRaceBtn').addEventListener('click',()=>{if(selectedClimber!==null)prepareRace();});$('nextPlayBtn').addEventListener('click',nextPlay);$('closeResultBtn').addEventListener('click',returnToEntry);
+loadLink().then(()=>showVerify('Link aktif. Masukkan ID member untuk memilih pemanjat.',true)).catch(err=>{showVerify(err.message,false);$('verifyBtn').disabled=true;$('memberInput').disabled=true;});
+</script>
 </body>
 </html>
