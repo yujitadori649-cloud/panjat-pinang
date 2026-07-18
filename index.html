@@ -163,7 +163,7 @@ function normalizePayload(raw){
   throw new Error("Link bukan untuk permainan ini atau versinya tidak didukung.");
 }
 async function loadLink(){
-  const code=getSignedData();if(!code)throw new Error("Data permainan tidak ditemukan di dalam link. Minta link baru dari agent.");
+  const code=getSignedData();if(!code)throw new Error("Kamu membuka URL game utama tanpa data permainan. Gunakan link lengkap dari Panel Agent yang memiliki ?play= di dalam alamatnya.");
   const parts=code.split(".");if(parts.length!==2||!parts[0]||!parts[1])throw new Error("Link bermain tidak lengkap atau terpotong saat dikirim.");
   let raw;try{raw=JSON.parse(b64urlToText(parts[0]));}catch{throw new Error("Data pada link tidak dapat dibaca. Minta agent membuat link baru.");}
   const mode=raw&&raw.v>=3?"part":"text";const valid=await verifySignature(parts[0],parts[1],mode);if(!valid)throw new Error("Link bermain tidak sah atau sudah berubah.");
