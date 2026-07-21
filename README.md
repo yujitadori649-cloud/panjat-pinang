@@ -1,1 +1,0 @@
-# panjat-pinang
