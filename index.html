@@ -151,8 +151,8 @@ const $=id=>document.getElementById(id);
 const escapeHtml=value=>String(value).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[ch]));
 const CLIMBERS=[
   {id:0,name:"ARYA",color:"#176bff",light:"#58a9ff",dark:"#092d87",skin:"#c98255",skinLight:"#efb383",hair:"#16111a",shortLight:"#f5f7ff",shortDark:"#bfc8df",accent:"#ef1739",hairType:0},
-  {id:1,name:"BARA",color:"#ed1739",light:"#ff5a70",dark:"#8d0921",skin:"#98512f",skinLight:"#d58c61",hair:"#24130e",shortLight:"#ed1739",shortDark:"#83091f",accent:"#ffffff",hairType:1},
-  {id:2,name:"CAKRA",color:"#f2b51d",light:"#ffe36c",dark:"#986100",skin:"#d69561",skinLight:"#f5be8b",hair:"#392116",shortLight:"#f6f6f1",shortDark:"#d2d0c6",accent:"#d81735",hairType:2},
+  {id:1,name:"SARI",color:"#ed1739",light:"#ff5a70",dark:"#8d0921",skin:"#98512f",skinLight:"#d58c61",hair:"#171315",shortLight:"#252329",shortDark:"#09090b",accent:"#ffffff",hairType:1},
+  {id:2,name:"NIA",color:"#f2b51d",light:"#ffe36c",dark:"#986100",skin:"#d69561",skinLight:"#f5be8b",hair:"#21191a",shortLight:"#252329",shortDark:"#09090b",accent:"#ffffff",hairType:2},
   {id:3,name:"RAKA",color:"#20c978",light:"#6dffb0",dark:"#076b3d",skin:"#ad6843",skinLight:"#e4a276",hair:"#121616",shortLight:"#ed1739",shortDark:"#920920",accent:"#ffffff",hairType:3}
 ];
 let linkPayload=null,currentRound=null,currentRoundIndex=-1,verifiedMember=false,selectedClimber=null;
@@ -193,6 +193,8 @@ function updateMemberInfo(){if(!linkPayload)return;const remaining=remainingCoun
 async function verifyMember(){const member=$('memberInput').value.trim().toUpperCase();$('memberInfo').classList.add('hidden');$('enterBtn').classList.add('hidden');verifiedMember=false;if(!member){showVerify('Masukkan ID member terlebih dahulu.',false);return;}try{if(!linkPayload)await loadLink();if(Date.now()>linkPayload.expiresAt)throw new Error('Link bermain sudah kedaluwarsa.');if(linkPayload.member!==member)throw new Error('ID tidak sesuai dengan link yang diberikan agent.');if(remainingCount()<=0)throw new Error('Semua kesempatan untuk ID ini sudah digunakan di perangkat ini.');verifiedMember=true;updateMemberInfo();showVerify('ID sesuai. Silakan pilih satu dari empat pemanjat.',true);}catch(err){showVerify(err.message||'Link tidak dapat dibuka.',false);}}
 function climberFigure(c,type='avatar'){
   const uid=`cl-${type}-${c.id}`;
+  const isGirl=c.id===1||c.id===2;
+  const backHair=isGirl?`<path d="M43 28 Q31 39 36 67 Q40 78 49 67 L48 38Z" fill="${c.hair}"/><path d="M76 29 Q89 42 82 68 Q78 77 71 67 L72 37Z" fill="${c.hair}"/>`:``;
   const hairStyles=[
     `<path d="M43 32 Q43 17 58 15 Q74 16 76 32 Q68 25 62 26 Q54 21 43 32Z" fill="${c.hair}"/><path d="M48 20 Q54 10 60 19 Q66 8 69 22" fill="none" stroke="${c.hair}" stroke-width="7" stroke-linecap="round"/>`,
     `<path d="M42 32 Q43 16 59 15 Q75 17 76 34 L70 27 L66 34 L59 26 L52 34 L47 27Z" fill="${c.hair}"/>`,
@@ -201,25 +203,27 @@ function climberFigure(c,type='avatar'){
   ];
   return `<svg class="climber-svg" viewBox="0 0 120 160" aria-hidden="true">
     <defs>
-      <linearGradient id="${uid}-body" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${c.light}"/><stop offset=".58" stop-color="${c.color}"/><stop offset="1" stop-color="${c.dark}"/></linearGradient>
+      <linearGradient id="${uid}-body" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff4b49"/><stop offset=".58" stop-color="#d9272c"/><stop offset="1" stop-color="#8e1119"/></linearGradient>
       <linearGradient id="${uid}-skin" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${c.skinLight}"/><stop offset="1" stop-color="${c.skin}"/></linearGradient>
-      <linearGradient id="${uid}-short" x1="0" y1="0" x2="0" y2="1"><stop stop-color="${c.shortLight}"/><stop offset="1" stop-color="${c.shortDark}"/></linearGradient>
+      <linearGradient id="${uid}-short" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#29282d"/><stop offset="1" stop-color="#09090b"/></linearGradient>
       <radialGradient id="${uid}-aura"><stop offset="0" stop-color="${c.light}" stop-opacity=".72"/><stop offset="1" stop-color="${c.color}" stop-opacity="0"/></radialGradient>
       <filter id="${uid}-shadow"><feDropShadow dx="1.5" dy="2.5" stdDeviation="1.8" flood-color="#000" flood-opacity=".38"/></filter>
     </defs>
     <ellipse class="aura" cx="60" cy="82" rx="48" ry="60" fill="url(#${uid}-aura)"/>
     <ellipse cx="60" cy="151" rx="24" ry="5" fill="rgba(0,0,0,.34)"/>
     <g class="character" filter="url(#${uid}-shadow)">
-      <g class="limb leg-left"><path d="M52 96 Q46 111 39 131" fill="none" stroke="url(#${uid}-skin)" stroke-width="12" stroke-linecap="round"/><path d="M35 135 Q42 129 49 134" fill="none" stroke="#f4f6ff" stroke-width="8" stroke-linecap="round"/><path d="M33 137 L48 137" stroke="${c.accent}" stroke-width="3" stroke-linecap="round"/></g>
-      <g class="limb leg-right"><path d="M68 96 Q75 111 82 131" fill="none" stroke="url(#${uid}-skin)" stroke-width="12" stroke-linecap="round"/><path d="M77 135 Q84 129 91 134" fill="none" stroke="#f4f6ff" stroke-width="8" stroke-linecap="round"/><path d="M78 137 L93 137" stroke="${c.accent}" stroke-width="3" stroke-linecap="round"/></g>
+      <g class="limb leg-left"><path d="M52 96 Q46 111 39 131" fill="none" stroke="url(#${uid}-skin)" stroke-width="12" stroke-linecap="round"/><path d="M35 135 Q42 129 49 134" fill="none" stroke="#e63338" stroke-width="8" stroke-linecap="round"/><path d="M33 137 L48 137" stroke="#fff" stroke-width="3" stroke-linecap="round"/></g>
+      <g class="limb leg-right"><path d="M68 96 Q75 111 82 131" fill="none" stroke="url(#${uid}-skin)" stroke-width="12" stroke-linecap="round"/><path d="M77 135 Q84 129 91 134" fill="none" stroke="#e63338" stroke-width="8" stroke-linecap="round"/><path d="M78 137 L93 137" stroke="#fff" stroke-width="3" stroke-linecap="round"/></g>
       <path d="M46 85 Q60 80 74 85 L71 104 Q60 108 49 103Z" fill="url(#${uid}-short)" stroke="${c.dark}" stroke-width="1.5"/>
-      <g class="torso"><path d="M45 49 Q60 43 75 50 L77 88 Q60 96 43 87Z" fill="url(#${uid}-body)" stroke="${c.dark}" stroke-width="1.5"/><path class="cloth-shine" d="M49 53 Q55 49 58 50 L55 86 Q50 86 47 83Z" fill="#fff"/><path d="M59 48 L59 91" stroke="${c.accent}" stroke-width="4"/><path d="M47 67 L74 67" stroke="${c.accent}" stroke-width="3" opacity=".95"/><circle cx="60" cy="61" r="6.5" fill="#fff" opacity=".95"/><text x="60" y="64.5" text-anchor="middle" font-size="8" font-weight="900" fill="${c.color}">${c.id+1}</text></g>
+      <g class="torso"><path d="M45 49 Q60 43 75 50 L77 88 Q60 96 43 87Z" fill="url(#${uid}-body)" stroke="#7e1018" stroke-width="1.5"/><path class="cloth-shine" d="M49 53 Q55 49 58 50 L55 86 Q50 86 47 83Z" fill="#fff"/><path d="M47 67 L74 67" stroke="#a5131d" stroke-width="2" opacity=".55"/><circle cx="60" cy="61" r="7" fill="#fff" opacity=".96"/><text x="60" y="64.5" text-anchor="middle" font-size="8" font-weight="900" fill="#c41d26">${c.id+1}</text></g>
       <g class="limb arm-left"><path d="M47 56 Q37 67 34 84" fill="none" stroke="url(#${uid}-skin)" stroke-width="11" stroke-linecap="round"/><path d="M32 82 Q36 78 40 84" fill="none" stroke="#f7f8ff" stroke-width="7" stroke-linecap="round"/><path d="M32 83 L40 83" stroke="${c.accent}" stroke-width="2"/></g>
       <g class="limb arm-right"><path d="M73 56 Q81 48 86 34" fill="none" stroke="url(#${uid}-skin)" stroke-width="11" stroke-linecap="round"/><path d="M82 35 Q87 30 91 35" fill="none" stroke="#f7f8ff" stroke-width="7" stroke-linecap="round"/><path d="M83 34 L91 34" stroke="${c.accent}" stroke-width="2"/></g>
       <rect x="54" y="43" width="12" height="10" rx="5" fill="url(#${uid}-skin)"/>
-      <ellipse cx="60" cy="31" rx="18" ry="19" fill="url(#${uid}-skin)" stroke="${c.skin}" stroke-width="1"/>
+      ${backHair}<ellipse cx="60" cy="31" rx="18" ry="19" fill="url(#${uid}-skin)" stroke="${c.skin}" stroke-width="1"/>
       <path d="M43 32 Q42 44 52 48 Q46 41 47 34Z" fill="${c.skin}"/><path d="M77 32 Q78 44 68 48 Q74 41 73 34Z" fill="${c.skin}"/>
       ${hairStyles[c.hairType]}
+      <path d="M42 27 Q60 20 78 27 L77 34 Q60 28 43 34Z" fill="#f7f4e9" stroke="#8b151a" stroke-width="1"/><path d="M43 27 Q60 21 77 27 L76 30 Q60 25 44 30Z" fill="#d9272c"/>
+      <path d="M77 27 Q88 23 94 29 Q87 32 80 31 Q88 36 91 42 Q82 39 76 34Z" fill="#f6f1e7" stroke="#8b151a" stroke-width="1"/><path d="M79 27 Q87 25 91 29 Q85 30 80 30Z" fill="#d9272c"/>
       <g class="eye"><ellipse cx="53" cy="32" rx="2.2" ry="2.8" fill="#17101a"/><ellipse cx="67" cy="32" rx="2.2" ry="2.8" fill="#17101a"/><circle cx="52.4" cy="31.2" r=".7" fill="#fff"/><circle cx="66.4" cy="31.2" r=".7" fill="#fff"/></g>
       <path d="M50 27 Q54 24 57 27 M63 27 Q67 24 70 27" fill="none" stroke="${c.hair}" stroke-width="1.8" stroke-linecap="round"/>
       <path d="M57 37 Q60 39 63 37" fill="none" stroke="#8b3c34" stroke-width="1.5" stroke-linecap="round"/><path d="M53 41 Q60 46 67 41" fill="#fff" stroke="#8b3c34" stroke-width="1"/>
