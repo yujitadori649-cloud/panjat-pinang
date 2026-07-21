@@ -1,0 +1,1 @@
+V19 – Panjat Pinang Merdeka Desa Upload Mudah. File background `arena-desa-merdeka.png` sekarang diletakkan langsung bersama `index.html`, sehingga tidak perlu membuat folder assets di GitHub. Seluruh sistem V18 tetap digunakan.
