@@ -78,6 +78,56 @@
 @media(max-width:650px){.pole{width:23px}.platform{width:68px}.summit-rewards{bottom:344px;transform:translateX(-50%) scale(.82)}.runner{--scale:.76}}
 @media(max-width:370px){.summit-rewards{bottom:314px;transform:translateX(-50%) scale(.74)}.runner{--scale:.69}}
 </style>
+<style id="v22-real-climb-motion">
+/* Siklus empat tahap: raih, tarik badan, pindahkan kaki, lalu ganti sisi. */
+.runner{transition:bottom .11s linear}
+.runner.moving .character{animation:realClimbBody .72s cubic-bezier(.45,.05,.55,.95) infinite}
+.runner.moving .torso{animation:realClimbTorso .72s ease-in-out infinite}
+.runner.moving .arm-left{animation:realArmLeft .72s ease-in-out infinite}
+.runner.moving .arm-right{animation:realArmRight .72s ease-in-out infinite}
+.runner.moving .leg-left{animation:realLegLeft .72s ease-in-out infinite}
+.runner.moving .leg-right{animation:realLegRight .72s ease-in-out infinite}
+.runner.moving .climber-svg{transform-origin:60px 92px;animation:climbWeightShift 1.44s ease-in-out infinite}
+@keyframes realClimbBody{
+  0%{transform:translate(1px,2px) rotate(.8deg)}
+  22%{transform:translate(-1px,-5px) rotate(-1deg)}
+  48%{transform:translate(-2px,-2px) rotate(-.5deg)}
+  72%{transform:translate(1px,-6px) rotate(1deg)}
+  100%{transform:translate(1px,2px) rotate(.8deg)}
+}
+@keyframes realClimbTorso{
+  0%,100%{transform:translateY(1px) rotate(1.5deg)}
+  25%{transform:translateY(-3px) rotate(-2.2deg)}
+  50%{transform:translateY(0) rotate(-1deg)}
+  75%{transform:translateY(-3px) rotate(2.2deg)}
+}
+@keyframes realArmLeft{
+  0%,100%{transform:translate(2px,7px) rotate(18deg)}
+  24%{transform:translate(-3px,-13px) rotate(-27deg)}
+  48%{transform:translate(-1px,-4px) rotate(-10deg)}
+  74%{transform:translate(2px,5px) rotate(12deg)}
+}
+@keyframes realArmRight{
+  0%,100%{transform:translate(-2px,-12px) rotate(25deg)}
+  24%{transform:translate(-1px,-3px) rotate(9deg)}
+  50%{transform:translate(-2px,7px) rotate(-17deg)}
+  74%{transform:translate(3px,-13px) rotate(28deg)}
+}
+@keyframes realLegLeft{
+  0%,100%{transform:translate(2px,-7px) rotate(18deg)}
+  25%{transform:translate(1px,4px) rotate(5deg)}
+  50%{transform:translate(-2px,8px) rotate(-15deg)}
+  75%{transform:translate(0,-5px) rotate(14deg)}
+}
+@keyframes realLegRight{
+  0%,100%{transform:translate(-2px,7px) rotate(-15deg)}
+  25%{transform:translate(0,-6px) rotate(14deg)}
+  50%{transform:translate(2px,-8px) rotate(19deg)}
+  75%{transform:translate(1px,5px) rotate(4deg)}
+}
+@keyframes climbWeightShift{0%,100%{transform:skewX(.4deg)}50%{transform:skewX(-.4deg)}}
+@media(prefers-reduced-motion:reduce){.runner.moving .character,.runner.moving .torso,.runner.moving .limb,.runner.moving .climber-svg{animation-duration:1.05s}}
+</style>
 </head>
 <body>
 <div class="app">
