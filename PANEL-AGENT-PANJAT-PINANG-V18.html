@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="dark" />
+  <title>Panel Agent • Panjat Pinang Merdeka Desa V18</title>
+  <style>
+    :root {
+      --red:#e31937;
+      --red-dark:#8c0b20;
+      --gold:#ffd36a;
+      --ink:#17060a;
+      --panel:#260b12;
+      --panel-2:#340e18;
+      --text:#fff8f0;
+      --muted:#d5b8be;
+      --line:rgba(255,255,255,.12);
+      --ok:#35d07f;
+      --bad:#ff6b7e;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 20% 0%,rgba(227,25,55,.28),transparent 34%),
+        radial-gradient(circle at 100% 30%,rgba(255,211,106,.12),transparent 26%),
+        linear-gradient(145deg,#110307,#240810 55%,#120306);
+    }
+    button,input,select,textarea{font:inherit}
+    .hidden{display:none!important}
+    .shell{width:min(1180px,calc(100% - 28px));margin:0 auto;padding:24px 0 48px}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .emblem{
+      width:48px;height:48px;border-radius:16px;display:grid;place-items:center;font-size:25px;
+      background:linear-gradient(145deg,#fff,#f0d8d8);color:var(--red-dark);
+      box-shadow:0 10px 28px rgba(0,0,0,.25)
+    }
+    h1,h2,h3,p{margin:0}
+    h1{font-size:clamp(20px,3vw,30px)}
+    .sub{margin-top:4px;color:var(--muted);font-size:14px}
+    .badge{padding:8px 11px;border:1px solid var(--line);border-radius:999px;color:var(--gold);font-size:12px;background:rgba(255,255,255,.04)}
+    .grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr);gap:18px}
+    .card{
+      border:1px solid var(--line);border-radius:22px;padding:20px;
+      background:linear-gradient(180deg,rgba(58,17,28,.94),rgba(31,8,15,.96));
+      box-shadow:0 18px 46px rgba(0,0,0,.24)
+    }
+    .card-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px}
+    .card-title h2{font-size:18px}
+    .fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .field.full{grid-column:1/-1}
+    label{display:block;font-size:13px;color:#f7dce1;margin-bottom:7px;font-weight:700}
+    input,select,textarea{
+      width:100%;border:1px solid var(--line);border-radius:13px;background:#18060b;color:#fff;
+      padding:12px 13px;outline:none;transition:.2s border-color,.2s box-shadow
+    }
+    textarea{min-height:116px;resize:vertical;line-height:1.45}
+    input:focus,select:focus,textarea:focus{border-color:rgba(255,211,106,.65);box-shadow:0 0 0 4px rgba(255,211,106,.08)}
+    .hint{color:var(--muted);font-size:12px;margin-top:6px;line-height:1.45}
+    .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:17px}
+    .btn{
+      border:0;border-radius:13px;padding:12px 16px;font-weight:800;cursor:pointer;
+      transition:.15s transform,.15s filter,.15s opacity
+    }
+    .btn:hover{filter:brightness(1.06)}
+    .btn:active{transform:translateY(1px)}
+    .btn.primary{background:linear-gradient(180deg,#ff3b55,#c50e2a);color:#fff;box-shadow:0 10px 24px rgba(227,25,55,.28)}
+    .btn.gold{background:linear-gradient(180deg,#ffe39b,#e4a928);color:#341700}
+    .btn.ghost{background:rgba(255,255,255,.06);color:#fff;border:1px solid var(--line)}
+    .btn.danger{background:rgba(255,77,105,.12);color:#ff9cac;border:1px solid rgba(255,77,105,.25)}
+    .result-box{padding:14px;border-radius:16px;border:1px dashed rgba(255,211,106,.38);background:rgba(255,211,106,.055);margin-top:14px}
+    .result-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+    .summary-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+    .mini{background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:12px;padding:10px}
+    .mini span{display:block;color:var(--muted);font-size:11px;margin-bottom:4px}
+    .mini strong{font-size:13px;word-break:break-word}
+    .status{font-size:12px;font-weight:800;padding:5px 9px;border-radius:999px;background:rgba(53,208,127,.12);color:#8cf1bc;border:1px solid rgba(53,208,127,.22)}
+    .history{display:grid;gap:10px;max-height:480px;overflow:auto;padding-right:3px}
+    .history-item{border:1px solid var(--line);border-radius:15px;padding:12px;background:rgba(255,255,255,.035)}
+    .history-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+    .history-id{font-weight:900;color:var(--gold)}
+    .history-small{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.45}
+    .history-actions{display:flex;gap:7px;margin-top:10px}
+    .small-btn{border:1px solid var(--line);background:rgba(255,255,255,.06);color:#fff;border-radius:9px;padding:7px 9px;font-size:12px;cursor:pointer}
+    .empty{border:1px dashed var(--line);border-radius:14px;padding:24px;text-align:center;color:var(--muted)}
+    .login-wrap{min-height:100vh;display:grid;place-items:center;padding:24px}
+    .login{width:min(430px,100%);border:1px solid var(--line);border-radius:25px;padding:24px;background:rgba(39,9,17,.95);box-shadow:0 26px 70px rgba(0,0,0,.35)}
+    .login-icon{width:64px;height:64px;border-radius:20px;display:grid;place-items:center;margin-bottom:16px;background:#fff;color:var(--red-dark);font-size:32px}
+    .error{color:#ff9cac;font-size:13px;margin-top:9px;min-height:18px}
+    .notice{margin-top:18px;border-left:3px solid var(--gold);background:rgba(255,211,106,.07);padding:12px 13px;border-radius:0 12px 12px 0;color:#f5dde2;font-size:12px;line-height:1.5}
+    @media(max-width:860px){.grid{grid-template-columns:1fr}.history{max-height:none}}
+    @media(max-width:560px){.shell{width:min(100% - 18px,1180px);padding-top:15px}.topbar{align-items:flex-start}.badge{display:none}.card{padding:16px;border-radius:18px}.fields{grid-template-columns:1fr}.field.full{grid-column:auto}.summary-meta{grid-template-columns:1fr}.actions .btn{width:100%}}
+  
+    .round-list{display:grid;gap:9px;margin-top:9px}
+    .round-row{display:grid;grid-template-columns:48px minmax(0,1fr);gap:9px;align-items:center}
+    .round-no{height:44px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.055);border:1px solid var(--line);font-weight:900;color:var(--gold)}
+    .quick-row{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}
+    .url-preview{font-size:12px;min-height:112px;word-break:break-all}
+    .summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
+    @media(max-width:560px){.summary-grid{grid-template-columns:1fr 1fr}.round-row{grid-template-columns:42px minmax(0,1fr)}}
+  </style>
+</head>
+
+<body>
+  <section id="loginView" class="login-wrap">
+    <div class="login">
+      <div class="login-icon">🔐</div>
+      <h1>Panel Agent Tebak Juara</h1>
+      <p class="sub">Buat link tebak juara khusus untuk ID member.</p>
+      <div style="margin-top:20px">
+        <label for="pinInput">PIN Agent</label>
+        <input id="pinInput" type="password" inputmode="numeric" autocomplete="off" placeholder="Masukkan PIN" />
+        <div id="pinError" class="error" aria-live="polite"></div>
+        <button id="loginBtn" class="btn primary" style="width:100%;margin-top:8px" type="button">BUKA PANEL AGENT</button>
+      </div>
+      <div class="notice">Panel ini bekerja tanpa API dan spreadsheet. Simpan file panel secara pribadi karena berisi kunci pembuatan link resmi.</div>
+    </div>
+  </section>
+
+  <main id="appView" class="shell hidden">
+    <header class="topbar">
+      <div class="brand">
+        <div class="emblem">🇮🇩</div>
+        <div>
+          <h1>Tebak Juara Panjat Pinang</h1>
+          <p class="sub">Panel pengaturan ID dan hasil tebakan • V18 ARENA DESA</p>
+        </div>
+      </div>
+      <span class="badge">SIGNED LINK V4 • GAME V18</span>
+    </header>
+
+    <div class="grid">
+      <section class="card">
+        <div class="card-title">
+          <h2>🔗 Buat Link Bermain</h2>
+          <span class="status">ID & HASIL TEBAKAN DIKUNCI</span>
+        </div>
+
+        <div class="fields">
+          <div class="field full">
+            <label for="gameUrl">URL GAME MEMBER</label>
+            <input id="gameUrl" type="url" readonly value="https://yujitadori649-cloud.github.io/panjat-pinang/" />
+            <p class="hint">Sudah terhubung otomatis ke GitHub Pages milikmu. Jangan kirim URL dasar ini kepada member; kirim link hasil tombol BUAT LINK BERMAIN yang memiliki ?play=.</p>
+            <div class="quick-row" style="margin-top:8px">
+              <button id="testUrlBtn" class="small-btn" type="button">UJI ALUR GAME (DEMO)</button>
+              <button id="testSignatureBtn" class="small-btn" type="button">TES KOMPATIBILITAS</button>
+              <span id="urlStatus" class="hint" aria-live="polite"></span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="memberId">ID / Username Member</label>
+            <input id="memberId" type="text" maxlength="30" placeholder="Contoh: MEMBER123" autocomplete="off" />
+          </div>
+          <div class="field">
+            <label for="playCount">Jumlah Kesempatan Menebak</label>
+            <input id="playCount" type="number" min="1" max="20" value="1" inputmode="numeric" />
+          </div>
+          <div class="field">
+            <label for="validHours">Masa Berlaku Link</label>
+            <select id="validHours">
+              <option value="1">1 jam</option><option value="3">3 jam</option><option value="6">6 jam</option>
+              <option value="12">12 jam</option><option value="24" selected>24 jam</option><option value="72">3 hari</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="difficulty">Tempo Balapan Otomatis</label>
+            <select id="difficulty"><option value="easy">Santai</option><option value="normal" selected>Normal</option><option value="hard">Cepat</option></select>
+          </div>
+          <div class="field full">
+            <label>Atur Hasil Tebakan Setiap Kesempatan</label>
+            <div class="quick-row">
+              <button id="allLoseBtn" class="small-btn" type="button">Semua Tebakan Salah</button>
+              <button id="all5kBtn" class="small-btn" type="button">Semua Tebakan Benar Rp5.000</button>
+              <button id="lastWinBtn" class="small-btn" type="button">Benar di Kesempatan Terakhir</button>
+            </div>
+            <div id="roundList" class="round-list"></div>
+          </div>
+          <div class="field full">
+            <label for="agentNote">Catatan Agent (opsional)</label>
+            <input id="agentNote" type="text" maxlength="70" placeholder="Contoh: Klaim event 17 Agustus" />
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="generateBtn" class="btn primary" type="button">BUAT LINK BERMAIN</button>
+          <button id="resetBtn" class="btn ghost" type="button">RESET FORM</button>
+        </div>
+
+        <div id="linkResult" class="result-box hidden" aria-live="polite">
+          <div class="result-head"><strong>✅ Link tebak juara berhasil dibuat</strong><span class="status">SIAP DIKIRIM</span></div>
+          <div class="summary-grid">
+            <div class="mini"><span>MEMBER</span><strong id="outMember">-</strong></div>
+            <div class="mini"><span>KESEMPATAN</span><strong id="outPlays">-</strong></div>
+            <div class="mini"><span>TEBAKAN BENAR</span><strong id="outWins">-</strong></div>
+            <div class="mini"><span>BERLAKU SAMPAI</span><strong id="outExpiry">-</strong></div>
+          </div>
+          <label for="playLink">Link Tebak Juara untuk Member</label>
+          <textarea id="playLink" class="url-preview" readonly spellcheck="false"></textarea>
+          <div class="actions">
+            <button id="copyBtn" class="btn gold" type="button">SALIN LINK TEBAK JUARA</button>
+            <button id="copyMessageBtn" class="btn ghost" type="button">SALIN PESAN MEMBER</button>
+            <button id="openBtn" class="btn ghost" type="button">BUKA LINK</button>
+            <button id="newBtn" class="btn ghost" type="button">BUAT LINK BARU</button>
+          </div>
+          <p id="copyStatus" class="hint" aria-live="polite"></p>
+        </div>
+
+        <div class="notice">WAJIB kirim link lengkap hasil panel yang memiliki ?play=. Jangan kirim URL game utama saja. Member memasukkan ID yang sama, memilih 1 dari 4 pemanjat, lalu balapan berjalan otomatis.</div>
+      </section>
+
+      <aside class="card">
+        <div class="card-title"><h2>🗂️ Riwayat Link Lokal</h2><button id="clearHistoryBtn" class="small-btn" type="button">Hapus Semua</button></div>
+        <div id="historyList" class="history"></div>
+        <p class="hint" style="margin-top:12px">Riwayat hanya tersimpan di browser/perangkat agent ini.</p>
+      </aside>
+    </div>
+  </main>
+
+  <script>
+    const AGENT_PIN = "1708";
+    const PRIVATE_JWK = {"kty":"EC","crv":"P-256","x":"e614dy_nGyn_uuvkOYPzQY81d6vM-mvbu6-HfiynvC8","y":"CTQaF-pcMhZ5e_veM6xxUXZ765Uq3mfzeaHPyIfzuB0","d":"Kalq9wHKO2YeDK86L3_l0MhbaUuAa_lCFbrz4z1uixI","ext":true,"key_ops":["sign"]};
+    const PUBLIC_JWK = {"kty":"EC","crv":"P-256","x":"e614dy_nGyn_uuvkOYPzQY81d6vM-mvbu6-HfiynvC8","y":"CTQaF-pcMhZ5e_veM6xxUXZ765Uq3mfzeaHPyIfzuB0","ext":true,"key_ops":["verify"]};
+    const $ = id => document.getElementById(id);
+    let currentLink = "";
+    let currentMessage = "";
+
+    const RESULT_OPTIONS = [
+      ["LOSE","TEBAKAN SALAH • Belum Beruntung",0,"LOSE"],
+      ["WIN_5000","TEBAKAN BENAR • Rp5.000",5000,"WIN"],
+      ["WIN_10000","TEBAKAN BENAR • Rp10.000",10000,"WIN"],
+      ["WIN_15000","TEBAKAN BENAR • Rp15.000",15000,"WIN"],
+      ["WIN_25000","TEBAKAN BENAR • Rp25.000",25000,"WIN"],
+      ["WIN_50000","TEBAKAN BENAR • Rp50.000",50000,"WIN"]
+    ];
+
+    function escapeHtml(value){return String(value).replace(/[&<>'"]/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[ch]));}
+    function b64url(bytes){let binary="";const arr=bytes instanceof Uint8Array?bytes:new Uint8Array(bytes);for(const byte of arr)binary+=String.fromCharCode(byte);return btoa(binary).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/g,"");}
+    function textToB64url(text){return b64url(new TextEncoder().encode(text));}
+    function randomId(length=12){const chars="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";const bytes=crypto.getRandomValues(new Uint8Array(length));return Array.from(bytes,b=>chars[b%chars.length]).join("");}
+    function formatDate(ts){return new Intl.DateTimeFormat("id-ID",{dateStyle:"medium",timeStyle:"short"}).format(new Date(ts));}
+    function formatRupiah(value){return new Intl.NumberFormat("id-ID",{style:"currency",currency:"IDR",maximumFractionDigits:0}).format(value);}
+
+    async function signPayload(payloadText){
+      if(!window.crypto || !crypto.subtle){
+        throw new Error("Browser tidak mendukung pembuatan link dari file lokal. Buka panel ini memakai Google Chrome atau Microsoft Edge terbaru.");
+      }
+      const key=await crypto.subtle.importKey("jwk",PRIVATE_JWK,{name:"ECDSA",namedCurve:"P-256"},false,["sign"]);
+      return crypto.subtle.sign({name:"ECDSA",hash:"SHA-256"},key,new TextEncoder().encode(payloadText));
+    }
+
+    async function verifyPayloadSignature(payloadPart,signature){
+      const key=await crypto.subtle.importKey("jwk",PUBLIC_JWK,{name:"ECDSA",namedCurve:"P-256"},false,["verify"]);
+      return crypto.subtle.verify(
+        {name:"ECDSA",hash:"SHA-256"},
+        key,
+        signature,
+        new TextEncoder().encode(payloadPart)
+      );
+    }
+
+    async function testCompatibility(){
+      const button=$("testSignatureBtn");
+      button.disabled=true;
+      const original=button.textContent;
+      button.textContent="MEMERIKSA...";
+      try{
+        const sample=textToB64url(JSON.stringify({v:4,g:"PP4",m:"TEST",c:"PP-TEST",i:Date.now(),e:Date.now()+60000,d:"n",r:[0,5000],x:randomId(6)}));
+        const signature=await signPayload(sample);
+        const valid=await verifyPayloadSignature(sample,signature);
+        if(!valid)throw new Error("Tanda tangan digital gagal diverifikasi.");
+        $("urlStatus").textContent="✅ Panel kompatibel dengan Game Panjat Pinang V18: tanda tangan digital valid.";
+        return true;
+      }catch(error){
+        $("urlStatus").textContent="❌ "+(error.message||String(error));
+        return false;
+      }finally{
+        button.disabled=false;
+        button.textContent=original;
+      }
+    }
+
+    function buildGitHubUrl(){
+      const url="https://yujitadori649-cloud.github.io/panjat-pinang/";
+      $("gameUrl").value=url;
+      return url;
+    }
+
+    function refreshGitHubUrl(){
+      $("gameUrl").value=buildGitHubUrl();
+    }
+
+    async function testGameUrl(){
+      const button=$("testUrlBtn");
+      const original=button.textContent;
+      button.disabled=true;
+      button.textContent="MEMBUAT DEMO...";
+      try{
+        const now=Date.now();
+        const payload={
+          v:4,
+          g:"PP4",
+          m:"DEMO123",
+          c:`PP-DEMO-${randomId(8)}`,
+          i:now,
+          e:now+(30*60*1000),
+          d:"n",
+          r:[5000],
+          x:randomId(8)
+        };
+        const payloadPart=textToB64url(JSON.stringify(payload));
+        const signature=await signPayload(payloadPart);
+        const valid=await verifyPayloadSignature(payloadPart,signature);
+        if(!valid)throw new Error("Link demo gagal diverifikasi.");
+        const memberUrl=new URL(buildGitHubUrl());
+        memberUrl.searchParams.set("play",`${payloadPart}.${b64url(signature)}`);
+        $("urlStatus").textContent="✅ Demo siap. Masukkan ID DEMO123 pada tab game yang terbuka.";
+        window.open(memberUrl.toString(),"_blank","noopener");
+      }catch(err){
+        $("urlStatus").textContent="❌ "+(err.message||String(err));
+        alert(err.message||String(err));
+      }finally{
+        button.disabled=false;
+        button.textContent=original;
+      }
+    }
+
+    let memoryHistory=[];
+    function getHistory(){
+      try{return JSON.parse(localStorage.getItem("pp_agent_guess_history_v15")||"[]");}
+      catch{return memoryHistory;}
+    }
+    function saveHistory(items){
+      const limited=items.slice(0,80);
+      memoryHistory=limited;
+      try{localStorage.setItem("pp_agent_guess_history_v15",JSON.stringify(limited));}catch(error){console.warn("Riwayat hanya disimpan selama panel terbuka:",error);}
+      renderHistory();
+    }
+    function addHistory(item){const items=getHistory();items.unshift(item);saveHistory(items);}
+
+    function resultSelectHtml(selected="LOSE"){
+      return RESULT_OPTIONS.map(([value,label])=>`<option value="${value}" ${value===selected?"selected":""}>${label}</option>`).join("");
+    }
+
+    function renderRounds(forcedValues=null){
+      const count=Math.max(1,Math.min(20,Number($("playCount").value)||1));
+      $("playCount").value=count;
+      const old=forcedValues||Array.from($("roundList").querySelectorAll("select")).map(s=>s.value);
+      $("roundList").innerHTML="";
+      for(let i=0;i<count;i++){
+        const row=document.createElement("div");row.className="round-row";
+        row.innerHTML=`<div class="round-no">${i+1}</div><select class="round-result" aria-label="Hasil tebakan kesempatan ${i+1}">${resultSelectHtml(old[i]||"LOSE")}</select>`;
+        $("roundList").appendChild(row);
+      }
+    }
+
+    function setAll(value){renderRounds(Array.from({length:Number($("playCount").value)},()=>value));}
+    function setLastWin(){const count=Number($("playCount").value);const values=Array.from({length:count},()=>"LOSE");values[count-1]="WIN_10000";renderRounds(values);}
+
+    function collectRounds(){
+      return Array.from(document.querySelectorAll(".round-result")).map(select=>{
+        const found=RESULT_OPTIONS.find(item=>item[0]===select.value)||RESULT_OPTIONS[0];
+        return {outcome:found[3],prize:found[2],label:found[1]};
+      });
+    }
+
+    function copyText(text,statusEl){
+      if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(text).then(()=>statusEl.textContent="Link member berhasil disalin.").catch(()=>fallbackCopy(text,statusEl));}
+      else fallbackCopy(text,statusEl);
+    }
+    function fallbackCopy(text,statusEl){const temp=document.createElement("textarea");temp.value=text;temp.style.position="fixed";temp.style.opacity="0";document.body.appendChild(temp);temp.select();try{document.execCommand("copy");statusEl.textContent="Link member berhasil disalin.";}catch{statusEl.textContent="Silakan salin link secara manual.";}temp.remove();}
+
+    function renderHistory(){
+      const items=getHistory(),list=$("historyList");
+      if(!items.length){list.innerHTML='<div class="empty">Belum ada link yang dibuat.</div>';return;}
+      list.innerHTML="";
+      items.forEach((item,index)=>{
+        const node=document.createElement("article");node.className="history-item";
+        const noteLine=item.note?`<br>Catatan: ${escapeHtml(item.note)}`:"";
+        node.innerHTML=`<div class="history-top"><div><div class="history-id">${escapeHtml(item.member)}</div><div class="history-small">${item.playCount} kesempatan • ${item.wins} menang • ${escapeHtml(item.campaignId)}</div></div><span class="status">LINK</span></div><div class="history-small">Dibuat: ${escapeHtml(formatDate(item.issuedAt))}<br>Berlaku sampai: ${escapeHtml(formatDate(item.expiresAt))}${noteLine}</div><div class="history-actions"><button class="small-btn copy-history" data-index="${index}" type="button">Salin Link</button><button class="small-btn delete-history" data-index="${index}" type="button">Hapus</button></div>`;
+        list.appendChild(node);
+      });
+      list.querySelectorAll(".copy-history").forEach(btn=>btn.addEventListener("click",()=>{const item=getHistory()[Number(btn.dataset.index)];if(item)copyText(item.link,$("copyStatus"));}));
+      list.querySelectorAll(".delete-history").forEach(btn=>btn.addEventListener("click",()=>{const itemsNow=getHistory();itemsNow.splice(Number(btn.dataset.index),1);saveHistory(itemsNow);}));
+    }
+
+    function login(){
+      if($("pinInput").value===AGENT_PIN){
+        $("loginView").classList.add("hidden");
+        $("appView").classList.remove("hidden");
+        refreshGitHubUrl();
+        renderHistory();
+        renderRounds();
+        $("memberId").focus();
+      }else{
+        $("pinError").textContent="PIN agent tidak sesuai.";
+        $("pinInput").select();
+      }
+    }
+
+    async function generateLink(){
+      const generateButton=$("generateBtn");
+      generateButton.disabled=true;
+      generateButton.textContent="MEMBUAT LINK...";
+      try{
+      const gameUrl=buildGitHubUrl();
+      const member=$("memberId").value.trim().toUpperCase();
+      if(!member){alert("Masukkan ID atau username member.");$("memberId").focus();return;}
+      const rounds=collectRounds();
+      if(!rounds.length){alert("Jumlah kesempatan menebak minimal 1.");return;}
+      try{localStorage.setItem("pp_guess_game_url",gameUrl);}catch(error){console.warn("Riwayat URL tidak dapat disimpan:",error);}
+      const issuedAt=Date.now(),expiresAt=issuedAt+Number($("validHours").value)*3600000;
+
+      // Payload V4 dibuat ringkas agar link lebih pendek dan stabil saat dikirim.
+      // Nilai 0 = belum beruntung, nilai di atas 0 = menang sesuai nominal hadiah.
+      const payload={
+        v:4,
+        g:"PP4",
+        m:member,
+        c:`PP-${randomId(10)}`,
+        i:issuedAt,
+        e:expiresAt,
+        d:$("difficulty").value==="easy"?"e":$("difficulty").value==="hard"?"h":"n",
+        r:rounds.map(item=>item.outcome==="WIN"?item.prize:0),
+        x:randomId(10)
+      };
+      const payloadText=JSON.stringify(payload);
+      const payloadPart=textToB64url(payloadText);
+      const signature=await signPayload(payloadPart);
+      const signatureValid=await verifyPayloadSignature(payloadPart,signature);
+      if(!signatureValid)throw new Error("Link gagal diverifikasi oleh pemeriksaan internal panel.");
+      const signed=`${payloadPart}.${b64url(signature)}`;
+
+      // Query parameter lebih aman daripada hash (#) saat link dikirim melalui chat.
+      const memberUrl=new URL(gameUrl);
+      memberUrl.hash="";
+      memberUrl.searchParams.delete("p");
+      memberUrl.searchParams.delete("play");
+      memberUrl.searchParams.set("play",signed);
+      const link=memberUrl.toString();
+
+      currentLink=link;
+      const wins=rounds.filter(r=>r.outcome==="WIN").length;
+      currentMessage=`🏆 TEBAK JUARA PANJAT PINANG\n\nID MEMBER: ${member}\nKESEMPATAN MENEBAK: ${rounds.length}x\nBERLAKU SAMPAI: ${formatDate(expiresAt)}\n\nBuka link berikut, masukkan ID yang sama, lalu pilih 1 dari 4 pemanjat:\n${link}`;
+      $("outMember").textContent=member;
+      $("outPlays").textContent=`${rounds.length}x main`;
+      $("outWins").textContent=`${wins}x`;
+      $("outExpiry").textContent=formatDate(expiresAt);
+      $("playLink").value=link;
+      $("linkResult").classList.remove("hidden");
+      $("copyStatus").textContent="Link V18 sudah diverifikasi dan siap dikirim ke member.";
+      addHistory({member,campaignId:payload.c,issuedAt,expiresAt,playCount:rounds.length,wins,link,note:$("agentNote").value.trim()});
+      $("linkResult").scrollIntoView({behavior:"smooth",block:"nearest"});
+      }finally{
+        generateButton.disabled=false;
+        generateButton.textContent="BUAT LINK BERMAIN";
+      }
+    }
+
+    function resetForm(){
+      $("memberId").value="";$("playCount").value="1";$("validHours").value="24";$("difficulty").value="normal";$("agentNote").value="";$("linkResult").classList.add("hidden");currentLink="";currentMessage="";renderRounds(["LOSE"]);$("memberId").focus();
+    }
+
+    $("loginBtn").addEventListener("click",login);$("pinInput").addEventListener("keydown",e=>{if(e.key==="Enter")login();});
+    $("playCount").addEventListener("input",()=>renderRounds());
+    $("memberId").addEventListener("input",event=>{event.target.value=event.target.value.toUpperCase().replace(/[^A-Z0-9._-]/g,"");});
+    $("testUrlBtn").addEventListener("click",testGameUrl);
+    $("testSignatureBtn").addEventListener("click",testCompatibility);
+    $("allLoseBtn").addEventListener("click",()=>setAll("LOSE"));$("all5kBtn").addEventListener("click",()=>setAll("WIN_5000"));$("lastWinBtn").addEventListener("click",setLastWin);
+    $("generateBtn").addEventListener("click",()=>generateLink().catch(err=>{console.error(err);alert("Gagal membuat link: "+(err&&err.message?err.message:String(err)));}));
+    $("resetBtn").addEventListener("click",resetForm);$("newBtn").addEventListener("click",resetForm);
+    $("copyBtn").addEventListener("click",()=>{if(currentLink)copyText(currentLink,$("copyStatus"));});
+    $("copyMessageBtn").addEventListener("click",()=>{if(currentMessage)copyText(currentMessage,$("copyStatus"));});
+    $("openBtn").addEventListener("click",()=>{if(currentLink)window.open(currentLink,"_blank","noopener");});
+    $("clearHistoryBtn").addEventListener("click",()=>{if(confirm("Hapus seluruh riwayat link pada perangkat ini?"))saveHistory([]);});
+  </script>
+</body>
+</html>
