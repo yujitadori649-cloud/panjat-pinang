@@ -311,32 +311,35 @@ function climberFigure(c,type='avatar'){
   </svg>`;
 }
 climberFigure=function(c,type='avatar'){
-  const uid=`toon-${type}-${c.id}`;
-  const shirts=['#1976d2','#ef2828','#f2b91f','#28aa58'];
-  const pants=['#f5f0dc','#20232b','#733fab','#263c63'];
+  const uid=`pinang-${type}-${c.id}`;
+  const skins=['#d99861','#98522f','#e3a06d','#b86d43'];
+  const shorts=['#fff9df','#fff','#f7f0dc','#fff'];
+  const accents=['#176bff','#f0b51c','#7f48d2','#20a967'];
+  const skin=skins[c.id], accent=accents[c.id];
   const hair=[
-    `<path d="M36 40 Q38 17 61 16 Q82 18 84 40 Q74 30 66 33 Q55 24 36 40Z" fill="#21160f"/>`,
-    `<path d="M36 40 Q37 18 60 17 Q82 19 84 42 L76 33 L70 42 L61 31 L52 42 L44 33Z" fill="#17120f"/>`,
-    `<path d="M36 39 Q40 20 61 18 Q80 20 84 39 Q71 31 61 34 Q49 28 36 39Z" fill="#3b2115"/><path d="M40 25 Q61 10 81 28" fill="none" stroke="#3b2115" stroke-width="7"/>`,
-    `<path d="M36 41 Q38 21 59 18 Q81 19 85 40 L77 35 L73 25 L65 34 L58 22 L51 34 L44 25Z" fill="#17130f"/>`
+    `<path d="M32 39 Q33 17 53 14 Q70 16 77 33 L68 28 L63 35 L56 25 L47 35 L40 27Z" fill="#18120e"/>`,
+    `<path d="M31 39 Q33 18 52 15 Q71 16 77 37 Q68 28 59 33 Q48 25 31 39Z" fill="#21150f"/><path d="M39 21 L34 12 M49 18 L49 8 M60 19 L65 9 M69 23 L77 16" stroke="#21150f" stroke-width="5"/>`,
+    `<path d="M31 39 Q35 20 53 16 Q71 17 77 37 L69 32 L64 22 L55 34 L48 23 L41 34Z" fill="#3a2116"/>`,
+    `<path d="M31 40 Q32 18 53 15 Q73 17 78 39 Q65 30 57 33 Q47 25 31 40Z" fill="#15130f"/><path d="M38 23 Q54 8 72 25" fill="none" stroke="#15130f" stroke-width="6"/>`
   ];
   return `<svg class="climber-svg" viewBox="0 0 120 160" aria-hidden="true">
-    <defs><filter id="${uid}-shadow"><feDropShadow dx="2" dy="3" stdDeviation="0" flood-color="#25170f" flood-opacity=".35"/></filter></defs>
-    <ellipse class="aura" cx="60" cy="82" rx="51" ry="65" fill="${c.light}" opacity=".28"/>
-    <g class="character" filter="url(#${uid}-shadow)" stroke="#25170f" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round">
-      <g class="limb leg-left"><path d="M53 105 Q47 119 42 138" fill="none" stroke="${c.skin}" stroke-width="13"/><path d="M37 140 Q44 133 53 139" fill="none" stroke="#402319" stroke-width="9"/></g>
-      <g class="limb leg-right"><path d="M68 105 Q76 119 80 138" fill="none" stroke="${c.skin}" stroke-width="13"/><path d="M76 140 Q84 133 92 140" fill="none" stroke="#402319" stroke-width="9"/></g>
-      <path d="M43 91 Q60 84 77 91 L72 112 Q60 118 48 111Z" fill="${pants[c.id]}"/>
-      <g class="torso"><path d="M41 55 Q60 46 79 55 L77 96 Q60 105 43 96Z" fill="${shirts[c.id]}"/><path d="M46 58 Q54 53 59 54 L56 94 Q50 94 46 90Z" fill="#fff" opacity=".22"/><circle cx="60" cy="70" r="10" fill="#fff"/><text x="60" y="75" text-anchor="middle" stroke="none" font-family="Arial Black" font-size="13" fill="#25170f">${c.id+1}</text></g>
-      <g class="limb arm-left"><path d="M45 62 Q33 72 31 91" fill="none" stroke="${c.skin}" stroke-width="13"/><circle cx="31" cy="92" r="7" fill="${c.skin}"/></g>
-      <g class="limb arm-right"><path d="M76 62 Q87 53 90 34" fill="none" stroke="${c.skin}" stroke-width="13"/><circle cx="90" cy="33" r="7" fill="${c.skin}"/></g>
-      <rect x="53" y="45" width="14" height="12" rx="5" fill="${c.skin}"/>
-      <ellipse cx="60" cy="34" rx="25" ry="24" fill="${c.skin}"/>
+    <defs><filter id="${uid}-shadow"><feDropShadow dx="2.5" dy="3.5" stdDeviation="0" flood-color="#24150d" flood-opacity=".38"/></filter></defs>
+    <ellipse class="aura" cx="60" cy="82" rx="50" ry="64" fill="${c.light}" opacity=".22"/>
+    <g class="character" filter="url(#${uid}-shadow)" stroke="#25170f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+      <g class="limb leg-left"><path d="M57 101 Q48 116 44 136" fill="none" stroke="${skin}" stroke-width="10"/><path d="M40 138 Q47 132 55 138" fill="none" stroke="#f2cf9e" stroke-width="8"/></g>
+      <g class="limb leg-right"><path d="M70 102 Q82 113 87 130" fill="none" stroke="${skin}" stroke-width="10"/><path d="M83 133 Q91 127 99 133" fill="none" stroke="#f2cf9e" stroke-width="8"/></g>
+      <path d="M48 89 Q62 85 76 91 L73 108 Q61 113 51 106Z" fill="${shorts[c.id]}"/><path d="M61 90 L61 108" stroke="#d7cbae" stroke-width="2"/>
+      <g class="torso"><path d="M42 54 Q57 47 72 53 Q80 67 76 94 Q63 102 47 95 Q40 76 42 54Z" fill="#ed2b25"/><path d="M45 57 Q50 52 55 53 L54 94 Q49 93 46 89Z" fill="#ff6a55" stroke="none"/><circle cx="59" cy="72" r="9" fill="#fff5d7"/><text x="59" y="76" text-anchor="middle" stroke="none" font-family="Arial Black" font-size="12" fill="${accent}">${c.id+1}</text></g>
+      <g class="limb arm-left"><path d="M45 59 Q35 70 30 87 Q36 93 43 84" fill="none" stroke="${skin}" stroke-width="10"/><circle cx="42" cy="84" r="6" fill="${skin}"/></g>
+      <g class="limb arm-right"><path d="M70 57 Q82 45 88 30 Q95 34 91 43" fill="none" stroke="${skin}" stroke-width="10"/><circle cx="91" cy="39" r="6" fill="${skin}"/></g>
+      <path d="M49 48 L53 57" stroke="${skin}" stroke-width="10"/>
+      <ellipse cx="51" cy="34" rx="22" ry="23" fill="${skin}"/>
       ${hair[c.id]}
-      <path d="M35 29 Q60 20 85 29 L84 37 Q60 29 36 37Z" fill="#fff"/><path d="M36 29 Q60 22 84 29 L83 33 Q60 27 37 33Z" fill="#ef2828"/>
-      <path d="M82 29 Q97 24 104 33 Q94 36 84 35 Q97 41 99 49 Q89 44 82 38Z" fill="#fff"/><path d="M84 29 Q95 27 101 33 Q93 34 85 33Z" fill="#ef2828"/>
-      <g class="eye" stroke="none"><ellipse cx="51" cy="37" rx="3" ry="4" fill="#21160f"/><ellipse cx="69" cy="37" rx="3" ry="4" fill="#21160f"/></g>
-      <path d="M48 48 Q60 58 72 48" fill="#fff"/><path d="M53 49 L67 49" stroke="#25170f" stroke-width="2"/>
+      <path d="M30 29 Q51 22 75 29 L74 36 Q51 29 31 36Z" fill="#fff"/><path d="M31 29 Q52 23 74 29 L73 32 Q51 27 32 33Z" fill="#ed2828"/>
+      <path d="M72 29 Q88 23 99 31 Q91 37 76 35 Q91 40 96 48 Q84 46 72 37Z" fill="#fff"/><path d="M74 29 Q87 26 96 31 Q88 34 75 33Z" fill="#ed2828"/>
+      <g class="eye" stroke="none"><ellipse cx="44" cy="37" rx="2.8" ry="4" fill="#20150f"/><ellipse cx="59" cy="36" rx="2.8" ry="4" fill="#20150f"/></g>
+      <path d="M41 47 Q51 56 62 46" fill="#fff"/><path d="M46 48 Q52 51 58 47" fill="none" stroke="#7e3529" stroke-width="1.5"/>
+      <path d="M72 63 Q79 58 83 50" fill="none" stroke="#fff" stroke-width="2" opacity=".45"/>
     </g>
   </svg>`;
 };
