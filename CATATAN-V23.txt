@@ -1,0 +1,1 @@
+V23 – Kartun Merdeka. Seluruh visual game member diganti menjadi gaya kartun 2D: arena desa merah-putih, empat atlet chibi, pohon pinang bergaris tebal, penonton bergerak dan melambaikan bendera, serta hadiah bergoyang. Gerakan memanjat bergantian, sistem link aman, data member, hadiah, dan Panel Agent tetap dipertahankan.

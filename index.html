@@ -128,6 +128,35 @@
 @keyframes climbWeightShift{0%,100%{transform:skewX(.4deg)}50%{transform:skewX(-.4deg)}}
 @media(prefers-reduced-motion:reduce){.runner.moving .character,.runner.moving .torso,.runner.moving .limb,.runner.moving .climber-svg{animation-duration:1.05s}}
 </style>
+<style id="v23-kartun-merdeka">
+  :root{--ink:#25170f;--red:#ef2424;--cream:#fff8df;--orange:#f58b19}
+  body{background:#6acdf2;font-family:"Trebuchet MS",Arial,sans-serif}
+  .hero{background:linear-gradient(#ed2c2c 0 49%,#fff 50%);border-bottom:5px solid var(--ink);box-shadow:0 6px 0 rgba(0,0,0,.18)}
+  .crest{background:#ffb11b;border:4px solid var(--ink);box-shadow:inset 0 0 0 3px #ffe169,3px 4px 0 rgba(0,0,0,.22)}
+  .card{background:#fff9e9;border:4px solid var(--ink);box-shadow:7px 8px 0 rgba(51,25,10,.25)}
+  .btn,.pick,.mini,.metric,.modal-card{border:3px solid var(--ink)!important;box-shadow:3px 4px 0 rgba(37,23,15,.28)!important}
+  .btn{border-radius:17px;font-weight:1000}.btn.primary{background:linear-gradient(#ffb52a,#f36d0c);color:#271306}.btn.gold{background:linear-gradient(#fff354,#f7b312);color:#271306}
+  .pick{background:#fff4cf;border-radius:20px}.pick.selected{background:#fff7b8;transform:translateY(-5px) rotate(-1deg);box-shadow:5px 7px 0 var(--red)!important}
+  .race-card{padding:0;overflow:hidden;background:#fff4d0}.race-top{background:#f7e7b7;border-bottom:4px solid var(--ink);position:relative;z-index:20}
+  .arena{height:610px;background-image:url("arena-kartun-merdeka.png")!important;background-size:cover!important;background-position:center!important;border:0;overflow:hidden}
+  .arena:before{background:linear-gradient(180deg,transparent 62%,rgba(86,145,20,.08))}.arena:after{display:none}.sun{display:none}
+  .finish-banner{top:20px;background:#fff8df;color:#23150d;border:4px solid var(--ink);border-radius:4px;box-shadow:4px 5px 0 rgba(0,0,0,.25);font-family:Impact,"Arial Black",sans-serif;letter-spacing:1px;transform:rotate(-1deg)}
+  .lanes{z-index:6;inset:82px 5% 50px;gap:3px}.lane{border-left:2px dashed rgba(255,255,255,.48)}.lane:first-child{border-left:0}
+  .pole{width:24px;height:360px;border:4px solid var(--ink);border-radius:13px;background:repeating-linear-gradient(86deg,#b6742c 0 15px,#8d4e20 16px 21px,#d09341 22px 31px);box-shadow:5px 1px 0 rgba(50,24,10,.18)}
+  .pole:after{content:"";position:absolute;inset:2px 4px auto;height:100%;border-left:3px solid rgba(255,220,126,.4);border-radius:12px}
+  .platform{bottom:356px;width:78px;height:13px;background:#a66426;border:4px solid var(--ink);border-radius:50%;box-shadow:0 5px 0 #6e3518}
+  .summit-rewards{bottom:373px;filter:drop-shadow(2px 3px 0 var(--ink))}.reward{animation:cartoonPrize 1s ease-in-out infinite alternate}.reward:nth-child(even){animation-delay:-.45s}
+  @keyframes cartoonPrize{to{transform:translateY(-6px) rotate(7deg)}}
+  .runner{--scale:1.02;width:118px;height:156px;filter:drop-shadow(3px 5px 0 rgba(37,23,15,.42));transition:bottom .075s linear}.climber-svg *{vector-effect:non-scaling-stroke}
+  .runner.moving .character{animation:cartoonBounce .42s cubic-bezier(.25,.8,.4,1) infinite alternate}.runner.moving .torso{animation:cartoonTorso .42s ease-in-out infinite alternate}.runner.moving .arm-left{animation:cartoonArmL .42s ease-in-out infinite alternate}.runner.moving .arm-right{animation:cartoonArmR .42s ease-in-out infinite alternate-reverse}.runner.moving .leg-left{animation:cartoonLegL .42s ease-in-out infinite alternate}.runner.moving .leg-right{animation:cartoonLegR .42s ease-in-out infinite alternate-reverse}
+  @keyframes cartoonBounce{to{transform:translateY(-5px) rotate(2deg)}}@keyframes cartoonTorso{to{transform:rotate(-4deg)}}@keyframes cartoonArmL{from{transform:rotate(-25deg)}to{transform:rotate(23deg)}}@keyframes cartoonArmR{from{transform:rotate(24deg)}to{transform:rotate(-24deg)}}@keyframes cartoonLegL{from{transform:rotate(16deg)}to{transform:rotate(-19deg)}}@keyframes cartoonLegR{from{transform:rotate(-16deg)}to{transform:rotate(19deg)}}
+  .lane-hud{background:#fff7d6;border:3px solid var(--ink);border-radius:8px;color:#26160c;box-shadow:3px 3px 0 rgba(0,0,0,.25)}.lane-hud-track{background:#bdde72;border:1px solid var(--ink)}.lane-hud-fill{background:linear-gradient(90deg,#ff2b25,#ffbe17)}.lane-label{background:#ef2424;color:#fff;border:3px solid var(--ink);border-radius:8px;box-shadow:2px 3px 0 rgba(0,0,0,.25)}
+  .crowd{display:flex!important;position:absolute;left:0;right:0;bottom:2px;height:88px;z-index:3;align-items:flex-end;justify-content:space-around;pointer-events:none;padding:0 7px}.fan{--skin:#c98255;--shirt:#ef302b;position:relative;width:38px;height:68px;animation:fanHop .72s ease-in-out infinite alternate;transform-origin:50% 100%}.fan:nth-child(2n){animation-delay:-.3s}.fan:nth-child(3n){animation-duration:.58s}.fan-head{position:absolute;left:8px;top:3px;width:25px;height:26px;border:3px solid var(--ink);border-radius:48% 48% 45% 45%;background:var(--skin);z-index:2}.fan-head:before{content:"";position:absolute;left:2px;right:2px;top:-5px;height:11px;border-radius:70% 70% 30% 30%;background:#211611}.fan-head:after{content:"◡";position:absolute;left:5px;top:4px;font-size:16px;font-weight:900;color:#25170f}.fan-body{position:absolute;left:5px;bottom:0;width:31px;height:38px;border:3px solid var(--ink);border-radius:12px 12px 3px 3px;background:var(--shirt)}.fan-arm{position:absolute;top:31px;width:9px;height:27px;border:3px solid var(--ink);border-radius:8px;background:var(--skin);transform-origin:50% 90%}.fan-arm.l{left:0;transform:rotate(28deg)}.fan-arm.r{right:0;transform:rotate(-28deg)}.fan-flag{position:absolute;left:30px;top:-24px;width:3px;height:43px;background:var(--ink);transform:rotate(8deg)}.fan-flag:after{content:"";position:absolute;left:3px;top:0;width:28px;height:20px;border:2px solid var(--ink);background:linear-gradient(#ed2424 0 50%,#fff 50%)}
+  @keyframes fanHop{to{transform:translateY(-7px) rotate(2deg)}}
+  .sim-controls{display:none}.countdown strong{font-family:Impact,"Arial Black",sans-serif;color:#ffb316;-webkit-text-stroke:4px var(--ink);text-shadow:5px 7px 0 rgba(0,0,0,.3)}
+  .modal-card{background:#fff5ce}.result-icon{filter:drop-shadow(3px 4px 0 var(--ink))}
+  @media(max-width:650px){.arena{height:535px;background-size:auto 100%!important}.lanes{inset:74px 1px 40px}.pole{width:18px;height:330px;border-width:3px}.platform{bottom:326px;width:58px}.summit-rewards{bottom:340px}.runner{--scale:.67}.crowd{height:62px}.fan{transform:scale(.72);margin:-5px;animation-name:fanHopMobile}@keyframes fanHopMobile{from{transform:scale(.72) translateY(0)}to{transform:scale(.72) translateY(-7px) rotate(2deg)}}.fan:nth-child(n+11){display:none}.finish-banner{font-size:11px}}
+</style>
 </head>
 <body>
 <div class="app">
@@ -171,7 +200,7 @@
       </div>
       <div id="arena" class="arena" aria-label="Arena balapan empat pemanjat">
         <div class="sun"></div><div class="finish-banner">⚔️ CLIMB ARENA • PUNCAK HADIAH</div>
-        <div id="lanes" class="lanes"></div><div class="crowd"></div>
+        <div id="lanes" class="lanes"></div><div id="cartoonCrowd" class="crowd"></div>
         <div class="sim-controls" aria-hidden="true"><div class="joystick"></div><div class="skills"><div class="skill">🛡️</div><div class="skill">⚡</div><div class="skill big">⬆️</div></div></div>
         <div id="countdown" class="countdown hidden"><strong id="countdownText">3</strong></div>
       </div>
@@ -281,6 +310,41 @@ function climberFigure(c,type='avatar'){
     </g>
   </svg>`;
 }
+climberFigure=function(c,type='avatar'){
+  const uid=`toon-${type}-${c.id}`;
+  const shirts=['#1976d2','#ef2828','#f2b91f','#28aa58'];
+  const pants=['#f5f0dc','#20232b','#733fab','#263c63'];
+  const hair=[
+    `<path d="M36 40 Q38 17 61 16 Q82 18 84 40 Q74 30 66 33 Q55 24 36 40Z" fill="#21160f"/>`,
+    `<path d="M36 40 Q37 18 60 17 Q82 19 84 42 L76 33 L70 42 L61 31 L52 42 L44 33Z" fill="#17120f"/>`,
+    `<path d="M36 39 Q40 20 61 18 Q80 20 84 39 Q71 31 61 34 Q49 28 36 39Z" fill="#3b2115"/><path d="M40 25 Q61 10 81 28" fill="none" stroke="#3b2115" stroke-width="7"/>`,
+    `<path d="M36 41 Q38 21 59 18 Q81 19 85 40 L77 35 L73 25 L65 34 L58 22 L51 34 L44 25Z" fill="#17130f"/>`
+  ];
+  return `<svg class="climber-svg" viewBox="0 0 120 160" aria-hidden="true">
+    <defs><filter id="${uid}-shadow"><feDropShadow dx="2" dy="3" stdDeviation="0" flood-color="#25170f" flood-opacity=".35"/></filter></defs>
+    <ellipse class="aura" cx="60" cy="82" rx="51" ry="65" fill="${c.light}" opacity=".28"/>
+    <g class="character" filter="url(#${uid}-shadow)" stroke="#25170f" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round">
+      <g class="limb leg-left"><path d="M53 105 Q47 119 42 138" fill="none" stroke="${c.skin}" stroke-width="13"/><path d="M37 140 Q44 133 53 139" fill="none" stroke="#402319" stroke-width="9"/></g>
+      <g class="limb leg-right"><path d="M68 105 Q76 119 80 138" fill="none" stroke="${c.skin}" stroke-width="13"/><path d="M76 140 Q84 133 92 140" fill="none" stroke="#402319" stroke-width="9"/></g>
+      <path d="M43 91 Q60 84 77 91 L72 112 Q60 118 48 111Z" fill="${pants[c.id]}"/>
+      <g class="torso"><path d="M41 55 Q60 46 79 55 L77 96 Q60 105 43 96Z" fill="${shirts[c.id]}"/><path d="M46 58 Q54 53 59 54 L56 94 Q50 94 46 90Z" fill="#fff" opacity=".22"/><circle cx="60" cy="70" r="10" fill="#fff"/><text x="60" y="75" text-anchor="middle" stroke="none" font-family="Arial Black" font-size="13" fill="#25170f">${c.id+1}</text></g>
+      <g class="limb arm-left"><path d="M45 62 Q33 72 31 91" fill="none" stroke="${c.skin}" stroke-width="13"/><circle cx="31" cy="92" r="7" fill="${c.skin}"/></g>
+      <g class="limb arm-right"><path d="M76 62 Q87 53 90 34" fill="none" stroke="${c.skin}" stroke-width="13"/><circle cx="90" cy="33" r="7" fill="${c.skin}"/></g>
+      <rect x="53" y="45" width="14" height="12" rx="5" fill="${c.skin}"/>
+      <ellipse cx="60" cy="34" rx="25" ry="24" fill="${c.skin}"/>
+      ${hair[c.id]}
+      <path d="M35 29 Q60 20 85 29 L84 37 Q60 29 36 37Z" fill="#fff"/><path d="M36 29 Q60 22 84 29 L83 33 Q60 27 37 33Z" fill="#ef2828"/>
+      <path d="M82 29 Q97 24 104 33 Q94 36 84 35 Q97 41 99 49 Q89 44 82 38Z" fill="#fff"/><path d="M84 29 Q95 27 101 33 Q93 34 85 33Z" fill="#ef2828"/>
+      <g class="eye" stroke="none"><ellipse cx="51" cy="37" rx="3" ry="4" fill="#21160f"/><ellipse cx="69" cy="37" rx="3" ry="4" fill="#21160f"/></g>
+      <path d="M48 48 Q60 58 72 48" fill="#fff"/><path d="M53 49 L67 49" stroke="#25170f" stroke-width="2"/>
+    </g>
+  </svg>`;
+};
+function renderCartoonCrowd(){
+  const skins=['#f0b07d','#cb8057','#995431','#e3a06e','#744128'];
+  const shirts=['#ef2929','#f6c526','#38ae64','#2984d5','#8c4dcc','#fff7de'];
+  $('cartoonCrowd').innerHTML=Array.from({length:16},(_,i)=>`<div class="fan" style="--skin:${skins[i%skins.length]};--shirt:${shirts[(i*3)%shirts.length]}"><i class="fan-head"></i><i class="fan-body"></i><i class="fan-arm l"></i><i class="fan-arm r"></i>${i%3===0?'<i class="fan-flag"></i>':''}</div>`).join('');
+}
 function avatarHtml(c){return `<div class="choice-badge">PILIHANMU</div><div class="pick-number" style="--runner:${c.color}">${c.id+1}</div><div class="avatar" style="--runner:${c.color}">${climberFigure(c,'avatar')}</div><strong>PEMANJAT ${c.name}</strong><small>NOMOR ${c.id+1}</small>`;}
 function renderPicker(){selectedClimber=null;$('pickerGrid').innerHTML=CLIMBERS.map(c=>`<button class="pick" data-id="${c.id}" style="--runner:${c.color}" type="button">${avatarHtml(c)}</button>`).join('');$('selectedNote').textContent='Belum ada pemanjat yang dipilih.';$('startRaceBtn').disabled=true;document.querySelectorAll('.pick').forEach(btn=>btn.addEventListener('click',()=>selectClimber(Number(btn.dataset.id))));}
 function selectClimber(id){selectedClimber=id;document.querySelectorAll('.pick').forEach(btn=>btn.classList.toggle('selected',Number(btn.dataset.id)===id));$('selectedNote').textContent=`Pilihanmu: PEMANJAT ${CLIMBERS[id].name} • NOMOR ${id+1}`;$('startRaceBtn').disabled=false;}
@@ -303,6 +367,7 @@ function returnToEntry(){$('resultModal').classList.add('hidden');$('confetti').
 
 $('memberInput').addEventListener('input',e=>{e.target.value=e.target.value.toUpperCase().replace(/[^A-Z0-9._-]/g,'');});
 $('verifyBtn').addEventListener('click',verifyMember);$('memberInput').addEventListener('keydown',e=>{if(e.key==='Enter')verifyMember();});$('enterBtn').addEventListener('click',enterPicker);$('backBtn').addEventListener('click',backToVerify);$('startRaceBtn').addEventListener('click',()=>{if(selectedClimber!==null)prepareRace();});$('nextPlayBtn').addEventListener('click',nextPlay);$('closeResultBtn').addEventListener('click',returnToEntry);
+renderCartoonCrowd();
 loadLink().then(()=>showVerify('Link aktif. Masukkan ID member untuk memilih pemanjat.',true)).catch(err=>{showVerify(err.message,false);$('verifyBtn').disabled=true;$('memberInput').disabled=true;});
 </script>
 </body>
